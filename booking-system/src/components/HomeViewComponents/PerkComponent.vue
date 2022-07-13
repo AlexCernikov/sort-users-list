@@ -1,9 +1,9 @@
 <template>
   <div class="perk-container">
-    <img :src="require('@/assets/' + src)" alt="{{alt}}" />
+    <img class="perk-image" :src="require('@/assets/' + src)" alt="{{alt}}" />
     <div class="text-container">
-      <h1>{{ header }}</h1>
-      <p>{{ description }}</p>
+      <h1 class="perk-header">{{ header }}</h1>
+      <p class="perk-description">{{ description }}</p>
     </div>
   </div>
 </template>
@@ -47,14 +47,14 @@ $roboto: 'Roboto Condensed', sans-serif;
   height: 72px;
 }
 
-img {
+.perk-image {
   width: 32px;
   height: 32px;
   margin-top: 4px;
   margin-right: 24px;
 }
 
-h1 {
+.perk-header {
   font-size: 32px;
   line-height: 38px;
   font-weight: 400;
@@ -63,7 +63,7 @@ h1 {
   text-align: left;
 }
 
-p {
+.perk-description {
   font-family: $lato;
   font-style: normal;
   font-weight: 400;

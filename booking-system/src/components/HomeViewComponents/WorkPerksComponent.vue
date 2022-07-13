@@ -43,11 +43,11 @@
     <div class="why-WFO">
       <div class="head">
         <div class="frame">
-          <p>Why working from office</p>
-          <hr />
+          <p class="wfo-text">Why working from office</p>
+          <hr class="wfo-hr" />
         </div>
         <h2 class="title-WFO">A place for peaceful and productive work</h2>
-        <p>
+        <p class="wfo-text">
           If you have 5+ kids, fluffy dog, slobbery cat and a turtle you need a quite place where to
           work in order to feed all these creatures in your house. Also you might need a good
           internet speed, some cups of cofee per day and periodically a good professional advice
@@ -126,7 +126,7 @@ $roboto: 'Roboto Condensed', sans-serif;
   color: $white;
 }
 
-p {
+.wfo-text {
   font-family: $lato;
   color: $white;
   font-style: normal;
@@ -135,7 +135,7 @@ p {
   line-height: 30px;
 }
 
-hr {
+.wfo-hr {
   width: 73px;
   height: 2px;
   background: $white;
