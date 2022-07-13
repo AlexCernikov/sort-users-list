@@ -1,8 +1,5 @@
 <template>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contactUs">Contact Us</router-link>
-    </nav>
+    <HeroSectionComponent/>
     <router-view/>
 </template>
 
