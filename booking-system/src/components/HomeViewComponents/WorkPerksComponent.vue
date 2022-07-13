@@ -2,12 +2,42 @@
   <div class="workPerks">
     <div class="ourSuport">
       <div class="perks">
-        <PerkComponent src="table.svg" alt="table" header="10+" description="Shared tables" />
-        <!-- <PerkComponent />
-                <PerkComponent />
-                <PerkComponent />
-                <PerkComponent />
-                <PerkComponent /> -->
+        <PerkComponent
+          src="table.svg"
+          alt="table"
+          header="10+"
+          description="Shared tables"
+          class="bottom-margin"
+        />
+        <PerkComponent
+          src="events.svg"
+          alt="events"
+          header="100+"
+          description="Recreational and educational Events"
+          class="bottom-margin"
+        />
+        <PerkComponent
+          src="meeting.svg"
+          alt="meeting"
+          header="4"
+          description="Meeting rooms"
+          class="bottom-margin"
+        />
+        <PerkComponent
+          src="wifi.svg"
+          alt="wifi"
+          header="500 Mbps"
+          description="Internet speed"
+          class="bottom-margin"
+        />
+
+        <PerkComponent src="user.svg" alt="user" header="∞" description="Cups of coffee" />
+        <PerkComponent
+          src="colleagues.svg"
+          alt="colleagues"
+          header="50+"
+          description="Experienced colleagues"
+        />
       </div>
     </div>
     <div class="whyWFO">
@@ -47,9 +77,10 @@ $roboto: 'Roboto Condensed', sans-serif;
 //Main container
 .workPerks {
   display: flex;
-  justify-content: space-between;
+  //   justify-content: space-between;
   width: 100%;
-  background-color: bisque;
+  justify-content: center;
+  align-items: center;
 }
 
 .perks {
@@ -70,9 +101,12 @@ $roboto: 'Roboto Condensed', sans-serif;
 
 //Left container
 .ourSuport {
-  background-color: aliceblue;
   width: 550px;
   height: 350px;
+}
+
+.bottom-margin {
+  margin-bottom: 67px;
 }
 
 //Right container
@@ -114,6 +148,8 @@ hr {
   width: 73px;
   height: 2px;
   background: $white;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .titleWFO {
