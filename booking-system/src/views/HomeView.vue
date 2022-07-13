@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <FirstComponent msg="Welcome to Your Vue.js + TypeScript App"/>
+    <HeroSectionComponent msg="Welcome  to Your Vue.js + TypeScript App"/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import FirstComponent from '@/components/FirstComponent.vue'; // @ is an alias to /src
+import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionComponent.vue'; // @ is an alias to /src
 
 export default defineComponent({
-  name: 'firstComponent',
+  name: 'heroSection',
   components: {
-    FirstComponent,
+    HeroSectionComponent,
   },
 });
 </script>

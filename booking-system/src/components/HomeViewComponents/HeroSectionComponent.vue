@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-
   </div>
 </template>
 
@@ -8,7 +7,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'FirstComponent',
+  name: 'HeroSectionComponent',
   props: {
     msg: String,
   },
