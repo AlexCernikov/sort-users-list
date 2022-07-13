@@ -2,7 +2,7 @@
   <div class="container">
     <div class="top">
         <h2><span>Book</span> a perfect spot in the office</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <p class="hero-top">Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Nemo nihil, placeat asperiores totam consectetur,
             dolorum numquam animi minima, laudantium quis molestias
             saepe quam velit quisquam atque minus assumenda reprehenderit id!</p>
@@ -72,6 +72,8 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 .container{
         display: flex;
         justify-content: center;
@@ -80,16 +82,27 @@ export default defineComponent({
         margin-top: 30px;
     }
     span{
-        color: red
-    }
+      color: #FF5A00;
+
+      }
     h2 {
-        font-size: 2.5rem;
+        font-family: 'Roboto Condensed';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 52px;
+        line-height: 61px;
         margin-right: 50px;
         margin-top: 0;
+        text-align: left;
     }
-    p {
-        font-size: 1.3rem;
+    .hero-top {
         margin-top: 0;
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: right;
     }
     .top {
         display: grid;
@@ -147,13 +160,26 @@ export default defineComponent({
 
     .form-question {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        font-size: 10px;
     }
 
-    .left-content {
+    .form-question >div {
+      margin: 0 40px;
+    }
+
+    .form-question >div>p:first-child {
+      margin-bottom: 5px;
+    }
+
+  .left-content {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
+
+  .left-content > p{
+    font-size: 1rem;
+  }
 </style>
