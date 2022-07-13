@@ -30,12 +30,24 @@
       Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during
       the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
       line in section 1.10.32.
-      <HeroSectionComponent/>
+      <NavBarComponent />
     </div>
     <router-view/>
   </div>
   <footer class="footer-bar"></footer>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import NavBarComponent from './components/CommonComponents/NavBarComponent.vue'; // @ is an alias to /src
+
+export default defineComponent({
+  name: 'navBarComponent',
+  components: {
+    NavBarComponent,
+  },
+});
+</script>
 
 <style lang="scss">
 @use 'sass:math';
@@ -45,8 +57,6 @@
   font-family: 'Roboto Condensed', 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
 #main {

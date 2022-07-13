@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HeroSectionComponent msg="Welcome  to Your Vue.js + TypeScript App"/>
+
   </div>
 </template>
 
