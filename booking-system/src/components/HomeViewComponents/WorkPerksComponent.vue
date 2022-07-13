@@ -1,6 +1,6 @@
 <template>
-  <div class="workPerks">
-    <div class="ourSuport">
+  <div class="work-perks">
+    <div class="our-support">
       <div class="perks">
         <PerkComponent
           src="table.svg"
@@ -40,13 +40,13 @@
         />
       </div>
     </div>
-    <div class="whyWFO">
+    <div class="why-WFO">
       <div class="head">
         <div class="frame">
           <p>Why working from office</p>
           <hr />
         </div>
-        <h2 class="titleWFO">A place for peaceful and productive work</h2>
+        <h2 class="title-WFO">A place for peaceful and productive work</h2>
         <p>
           If you have 5+ kids, fluffy dog, slobbery cat and a turtle you need a quite place where to
           work in order to feed all these creatures in your house. Also you might need a good
@@ -75,7 +75,7 @@ $lato: 'Lato', sans-serif;
 $roboto: 'Roboto Condensed', sans-serif;
 
 //Main container
-.workPerks {
+.work-perks {
   display: flex;
   //   justify-content: space-between;
   width: 100%;
@@ -90,17 +90,8 @@ $roboto: 'Roboto Condensed', sans-serif;
   height: 350px;
 }
 
-.textPerks {
-  font-family: $lato;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #9a9a9a;
-}
-
 //Left container
-.ourSuport {
+.our-support {
   width: 550px;
   height: 350px;
 }
@@ -110,7 +101,7 @@ $roboto: 'Roboto Condensed', sans-serif;
 }
 
 //Right container
-.whyWFO {
+.why-WFO {
   background-color: #231f20;
   width: 540px;
   height: 421px;
@@ -152,7 +143,7 @@ hr {
   margin-bottom: 16px;
 }
 
-.titleWFO {
+.title-WFO {
   color: $white;
   font-family: $roboto;
   font-style: normal;
