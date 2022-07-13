@@ -11,7 +11,7 @@ import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionCom
 import SpaceSectionComponent from '@/components/HomeViewComponents/SpaceSectionComponent.vue';
 
 export default defineComponent({
-  name: 'heroSection',
+  name: 'spaceSectionComponent',
   components: {
     HeroSectionComponent,
     SpaceSectionComponent,
