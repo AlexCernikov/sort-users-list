@@ -8,19 +8,16 @@
     </div>
     <router-view/>
   </div>
-  <footer class="footer-bar">
-    <div class="copyright">
-    </div>
-  </footer>
+  <footer class="footer-bar"></footer>
 </template>
 
 <style lang="scss">
+@use 'sass:math';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Condensed', 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
 #main {
@@ -51,4 +48,8 @@
 }
 
 $baseFontSize: 16 !default;
+
+@function rem($pixels, $context: $baseFontSize) {
+  @return #{math.div($pixels, $context)}rem;
+}
 </style>
