@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="387f5d79-cb88-4f43-8b44-6036a81cce66" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/booking-system/src/assets/ISD_Logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking-system/src/components/CommonComponents/ISD_Logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/booking-system/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/src/components/CommonComponents/NavBarComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/components/CommonComponents/NavBarComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/booking-system/src/components/HomeViewComponents/HeroSectionComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/components/HomeViewComponents/HeroSectionComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/src/views/ContactUsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/views/ContactUsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
