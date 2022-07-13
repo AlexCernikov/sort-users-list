@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="387f5d79-cb88-4f43-8b44-6036a81cce66" name="Changes" comment="" />
+    <list default="true" id="387f5d79-cb88-4f43-8b44-6036a81cce66" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-system/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/App.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +31,7 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/ISD Moldova/internship-booking-system",
     "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "D:\\ISD Moldova\\internship-booking-system\\booking-system\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -42,5 +49,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

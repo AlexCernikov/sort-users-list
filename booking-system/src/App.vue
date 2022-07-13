@@ -1,9 +1,17 @@
 <template>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contactUs">Contact Us</router-link>
-    </nav>
+  <header></header>
+  <div id="main">
+    <div id="container-1" class="custom-container">
+      <div class="main-content">
+        Hello World
+      </div>
+    </div>
     <router-view/>
+  </div>
+  <footer class="footer-bar">
+    <div class="copyright">
+    </div>
+  </footer>
 </template>
 
 <style lang="scss">
@@ -15,16 +23,32 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+#main {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  min-width: 0;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  > .custom-container {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  .main-content {
+    flex: 1;
+    width: 70%;
+    margin: auto;
   }
 }
+
+$baseFontSize: 16 !default;
 </style>
