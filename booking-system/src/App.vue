@@ -31,6 +31,7 @@
       Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during
       the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
       line in section 1.10.32.
+      <HeroSectionComponent/>
     </div>
     <router-view/>
   </div>
@@ -45,6 +46,8 @@
   font-family: 'Roboto Condensed', 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 
 #main {
