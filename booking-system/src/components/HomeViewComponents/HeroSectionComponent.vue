@@ -88,6 +88,7 @@ export default defineComponent({
     h2 {
         font-family: 'Roboto Condensed';
         font-style: normal;
+        color: #231F20;
         font-weight: 700;
         font-size: 52px;
         line-height: 61px;
@@ -141,6 +142,7 @@ export default defineComponent({
         align-items: center;
         background-color: #FF5A00;
         color: white;
+        font-family: 'Roboto Condensed';
     }
 
     .form >div:first-child {
@@ -151,6 +153,7 @@ export default defineComponent({
         display: flex;
         justify-content: center;
         align-items: center;
+        font-family: 'Roboto Condensed';
     }
 
     .left-content>p {
