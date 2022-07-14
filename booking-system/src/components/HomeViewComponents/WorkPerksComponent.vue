@@ -140,7 +140,7 @@ $roboto: 'Roboto Condensed', sans-serif;
   height: 2px;
   background: $white;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
 }
 
 .title-WFO {
