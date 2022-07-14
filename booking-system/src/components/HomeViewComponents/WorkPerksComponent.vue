@@ -68,6 +68,7 @@ export default defineComponent({ name: 'WorkPerksComponent', components: { PerkC
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 $white: #ffffff;
+$black: #231f20;
 $lato: 'Lato', sans-serif;
 $roboto: 'Roboto Condensed', sans-serif;
 
@@ -99,10 +100,9 @@ $roboto: 'Roboto Condensed', sans-serif;
 
 //Right container
 .why-WFO {
-  background-color: #231f20;
+  background-color: $black;
   width: 540px;
   height: 421px;
-
   text-align: left;
 }
 
