@@ -9,7 +9,6 @@
           :alt="perk.alt"
           :header="perk.header"
           :description="perk.description"
-          :class="perk.class"
         ></PerkComponent>
       </div>
     </div>
@@ -46,28 +45,24 @@ export default defineComponent({
           alt: 'table',
           header: '10+',
           description: 'Shared tables',
-          class: 'bottom-margin',
         },
         {
           src: 'events.svg',
           alt: 'events',
           header: '100+',
           description: 'Recreational and educational Events',
-          class: 'bottom-margin',
         },
         {
           src: 'meeting.svg',
           alt: 'meeting',
           header: '4',
           description: 'Meeting rooms',
-          class: 'bottom-margin',
         },
         {
           src: 'wifi.svg',
           alt: 'wifi',
           header: '500 Mbps',
           description: 'Internet speed',
-          class: 'bottom-margin',
         },
         { src: 'user.svg', alt: 'user', header: '∞', description: 'Cups of coffee' },
         {
@@ -99,8 +94,10 @@ $roboto: 'Roboto Condensed', sans-serif;
 }
 
 .perks {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 67px;
   width: 550px;
   height: 350px;
 }
@@ -109,10 +106,6 @@ $roboto: 'Roboto Condensed', sans-serif;
 .our-support {
   width: 550px;
   height: 350px;
-}
-
-.bottom-margin {
-  margin-bottom: 67px;
 }
 
 //Right container
