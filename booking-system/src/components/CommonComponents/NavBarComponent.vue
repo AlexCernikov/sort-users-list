@@ -2,7 +2,7 @@
   <div class="navContainer">
     <nav>
       <div class="logoSide">
-        <img src="./ISD_Logo.svg" alt="ISD_Logo">
+        <img src="@/assets/ISD_Logo.svg" alt="ISD_Logo">
       </div>
       <div class="clientSide">
         <router-link to="/">Home</router-link>
@@ -24,10 +24,10 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .navContainer {
   width: 100%;
-  margin-top: 24px;
+  margin: 24px 0;
 }
 
 nav {
@@ -42,8 +42,12 @@ nav {
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
+
+  .logoSide {
+    margin-left: -28px;
   }
 
   .clientSide a {
