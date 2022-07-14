@@ -1,7 +1,9 @@
 <template>
     <nav>
       <div class="nav__logoSide">
-        <img src="@/assets/ISD_Logo.svg" alt="ISD_Logo">
+        <router-link to="/">
+          <img src="@/assets/ISD_Logo.svg" alt="ISD_Logo">
+        </router-link>
       </div>
       <div class="nav__clientSide">
         <router-link to="/">Home</router-link>
@@ -28,6 +30,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 24px 0;
+  max-width: 1280px;
 
   a {
     text-decoration: none;
