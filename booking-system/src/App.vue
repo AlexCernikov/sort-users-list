@@ -4,21 +4,24 @@
   </header>
   <div id="main">
     <div class="main-content">
-      <HomeView />
+      <router-view/>
     </div>
-    <router-view/>
   </div>
-  <footer class="footer-bar"></footer>
+  <footer class="footer-bar">
+    <FooterComponent/>
+  </footer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NavBarComponent from './components/CommonComponents/NavBarComponent.vue'; // @ is an alias to /src
+import FooterComponent from '@/components/CommonComponents/FooterComponent.vue';
+import NavBarComponent from './components/CommonComponents/NavBarComponent.vue';
 
 export default defineComponent({
   name: 'navBarComponent',
   components: {
     NavBarComponent,
+    FooterComponent,
   },
 });
 </script>

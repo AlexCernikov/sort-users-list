@@ -39,7 +39,7 @@ nav {
     text-decoration: none;
     color: #2c3e50;
     height: 28px;
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -60,14 +60,9 @@ nav {
 
   #signUp {
     background: #231F20;
-    box-shadow: 0px 4px 16px rgba(255, 87, 34, 0.32);
+    box-shadow: 0 4px 16px rgba(255, 87, 34, 0.32);
     padding: 12px 24px;
     color: #FFFFFF;
   }
 }
-
-// img {
-//     display: inline;
-//     margin: 24px 92px 0px 132px;
-// }
 </style>
