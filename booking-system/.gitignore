@@ -21,4 +21,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+#VScode configurations
+.prettierrc
+
 .idea\workspace.xml
+
