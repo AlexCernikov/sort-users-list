@@ -5,6 +5,7 @@
   <div id="main">
     <div class="main-content">
       <router-view/>
+      <MapComponent />
     </div>
   </div>
   <footer class="footer-bar">
@@ -15,12 +16,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import FooterComponent from '@/components/CommonComponents/FooterComponent.vue';
+import MapComponent from '@/components/CommonComponents/MapComponent.vue';
 import NavBarComponent from './components/CommonComponents/NavBarComponent.vue';
 
 export default defineComponent({
   name: 'navBarComponent',
   components: {
     NavBarComponent,
+    MapComponent,
     FooterComponent,
   },
 });

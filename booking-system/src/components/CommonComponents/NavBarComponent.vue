@@ -1,10 +1,9 @@
 <template>
-  <div class="navContainer">
     <nav>
-      <div class="logoSide">
+      <div class="nav__logoSide">
         <img src="@/assets/ISD_Logo.svg" alt="ISD_Logo">
       </div>
-      <div class="clientSide">
+      <div class="nav__clientSide">
         <router-link to="/">Home</router-link>
         <router-link to="/bookSpace">Book a Space</router-link>
         <router-link to="/spaceOptions">Space Options</router-link>
@@ -12,7 +11,7 @@
         <router-link to="/reviews">Reviews</router-link>
         <router-link to="/contactUs">Contact Us</router-link>
       </div>
-      <div class="adminSide">
+      <div class="nav__adminSide">
         <div class="adminBtn">
           <router-link to="/logIn">Log in</router-link>
         </div>
@@ -21,19 +20,14 @@
         </div>
       </div>
     </nav>
-  </div>
 </template>
 
 <style scoped lang="scss">
-.navContainer {
-  width: 100%;
-  margin: 24px 0;
-}
-
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 24px 0;
 
   a {
     text-decoration: none;
@@ -44,18 +38,11 @@ nav {
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.75rem;
+    margin-left: 40px;
   }
 
-  .logoSide {
+  .nav__logoSide {
     margin-left: -28px;
-  }
-
-  .clientSide a {
-    margin-left: 40px;
-  }
-
-  .adminSide a {
-    margin-left: 40px;
   }
 
   .adminBtn {
@@ -67,6 +54,11 @@ nav {
     box-shadow: 0 4px 16px rgba(255, 87, 34, 0.32);
     padding: 12px 24px;
     color: #FFFFFF;
+  }
+
+  #signUp:hover {
+    transition-duration: 0.5s;
+    background-color: #FF5A00;
   }
 }
 </style>
