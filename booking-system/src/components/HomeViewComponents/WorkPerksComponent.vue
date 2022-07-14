@@ -3,41 +3,14 @@
     <div class="our-support">
       <div class="perks">
         <PerkComponent
-          src="table.svg"
-          alt="table"
-          header="10+"
-          description="Shared tables"
-          class="bottom-margin"
-        />
-        <PerkComponent
-          src="events.svg"
-          alt="events"
-          header="100+"
-          description="Recreational and educational Events"
-          class="bottom-margin"
-        />
-        <PerkComponent
-          src="meeting.svg"
-          alt="meeting"
-          header="4"
-          description="Meeting rooms"
-          class="bottom-margin"
-        />
-        <PerkComponent
-          src="wifi.svg"
-          alt="wifi"
-          header="500 Mbps"
-          description="Internet speed"
-          class="bottom-margin"
-        />
-
-        <PerkComponent src="user.svg" alt="user" header="∞" description="Cups of coffee" />
-        <PerkComponent
-          src="colleagues.svg"
-          alt="colleagues"
-          header="50+"
-          description="Experienced colleagues"
-        />
+          v-for="(perk, index) in perksProps"
+          :key="index"
+          :src="perk.src"
+          :alt="perk.alt"
+          :header="perk.header"
+          :description="perk.description"
+          :class="perk.class"
+        ></PerkComponent>
       </div>
     </div>
     <div class="why-WFO">
@@ -62,7 +35,51 @@
 import { defineComponent } from 'vue';
 import PerkComponent from './PerkComponent.vue';
 
-export default defineComponent({ name: 'WorkPerksComponent', components: { PerkComponent } });
+export default defineComponent({
+  name: 'WorkPerksComponent',
+  components: { PerkComponent },
+  data() {
+    return {
+      perksProps: [
+        {
+          src: 'table.svg',
+          alt: 'table',
+          header: '10+',
+          description: 'Shared tables',
+          class: 'bottom-margin',
+        },
+        {
+          src: 'events.svg',
+          alt: 'events',
+          header: '100+',
+          description: 'Recreational and educational Events',
+          class: 'bottom-margin',
+        },
+        {
+          src: 'meeting.svg',
+          alt: 'meeting',
+          header: '4',
+          description: 'Meeting rooms',
+          class: 'bottom-margin',
+        },
+        {
+          src: 'wifi.svg',
+          alt: 'wifi',
+          header: '500 Mbps',
+          description: 'Internet speed',
+          class: 'bottom-margin',
+        },
+        { src: 'user.svg', alt: 'user', header: '∞', description: 'Cups of coffee' },
+        {
+          src: 'colleagues.svg',
+          alt: 'colleagues',
+          header: '50+',
+          description: 'Experienced colleagues',
+        },
+      ],
+    };
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
