@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HeroSectionComponent msg="Welcome  to Your Vue.js + TypeScript App"/>
-    <SpaceSectionComponent />
+    <SpaceSectionComponent msg='param1' name="Space1" description="description"/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionCom
 import SpaceSectionComponent from '@/components/HomeViewComponents/SpaceSectionComponent.vue';
 
 export default defineComponent({
-  name: 'spaceSectionComponent',
+  name: 'homeViewComponents',
   components: {
     HeroSectionComponent,
     SpaceSectionComponent,

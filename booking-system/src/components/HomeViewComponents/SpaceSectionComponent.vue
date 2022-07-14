@@ -2,7 +2,9 @@
 <!-- eslint-disable max-len -->
  <section class="our-spaces">
     <div class="container">
-        <div class="our-spaces__top">
+      <div>
+      </div>
+        <div class="our-spaces__top" v-on:click="showCards" v-on:keydown="showCards">
         <h3 class="our-spaces__title">Our Spaces </h3>
         <p class="our-spaces__text"> Our space is designed to give you a different experience when working with your team or personally </p>
         </div>
@@ -62,7 +64,7 @@
              </div>
             </div>
             <div class="space__item">
-              <img class="space__images" src="../../assets/spacesection/image1.png" alt="image">
+              <img class="space__images" src="../../assets/spacesection/image3.png" alt="image">
               <a class="space__link" href="#">
                 <div class="space__button">
                   <img class="space__svg" src="../../assets/spacesection/arrow.svg" alt="svg">
@@ -100,6 +102,24 @@ export default defineComponent({
   name: 'spaceSectionComponent',
   props: {
     msg: String,
+    name: String,
+    description: String,
+  },
+  data() {
+    const data = [
+      {
+        name: 'Shared table',
+        description: 'Description',
+        imageUrl: '',
+      },
+    ];
+    const showCards = () => {
+      console.log('cards');
+    };
+    return {
+      showCards,
+      data,
+    };
   },
 });
 </script>
