@@ -73,8 +73,8 @@ $roboto: 'Roboto Condensed', sans-serif;
 
 //Main container
 .work-perks {
+  margin-top: 204px;
   display: flex;
-  //   justify-content: space-between;
   width: 100%;
   justify-content: center;
   align-items: center;
