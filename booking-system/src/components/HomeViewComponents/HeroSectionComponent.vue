@@ -55,8 +55,7 @@
         <div class="form-submit">Find my Space</div>
       </div>
       <div class="img-background">
-        <img src="https://cdn.archilovers.com/projects/2870d676-dd12-4858-b351-e971cedd3678.jpg"
-             alt="office-image">
+        <img src="@/assets/900x600_img.png" alt="office_image">
       </div>
 
     </div>
@@ -72,6 +71,12 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+
+img {
+  right: 20%;
+  position:relative;
+  z-index: -1;
+}
 .container {
   display: flex;
   justify-content: center;
