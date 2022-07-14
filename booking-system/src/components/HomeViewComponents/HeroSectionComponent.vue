@@ -82,7 +82,6 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 30px;
 }
 
 span {
@@ -100,6 +99,7 @@ h2 {
   margin-right: 50px;
   margin-top: 0;
   text-align: left;
+  margin-left: 50px;
 }
 
 .hero-top {
@@ -110,12 +110,14 @@ h2 {
   font-size: 20px;
   line-height: 30px;
   text-align: right;
+  margin-right: 50px;
 }
 
 .top {
   display: grid;
   grid-template-columns:50% 50%;
   width: 100%;
+  margin-top: 50px;
 }
 
 .bot {
