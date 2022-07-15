@@ -40,20 +40,19 @@ $roboto: 'Roboto Condensed', sans-serif;
 
 .perk-container {
   display: flex;
-  width: 275px;
-  height: 72px;
+  width: 100%;
 }
 
 .perk-image {
-  width: 32px;
-  height: 32px;
-  margin-top: 4px;
-  margin-right: 24px;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.25rem;
+  margin-right: 1.5rem;
 }
 
 .perk-header {
-  font-size: 32px;
-  line-height: 38px;
+  font-size: 2rem;
+  line-height: 2.37rem;
   font-weight: 400;
   font-family: $roboto;
   margin: 0;
@@ -64,8 +63,9 @@ $roboto: 'Roboto Condensed', sans-serif;
   font-family: $lato;
   font-style: normal;
   font-weight: 400;
-  margin-top: 8px;
+  margin-top: 0.5rem;
   color: #9a9a9a;
   text-align: left;
+  width: 100%;
 }
 </style>
