@@ -1,5 +1,5 @@
 <template>
-  <div class="work-perks">
+  <section class="work-perks">
     <div class="our-support">
       <div class="perks">
         <PerkComponent
@@ -27,7 +27,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -91,50 +91,44 @@ $roboto: 'Roboto Condensed', sans-serif;
 
 //Main container
 .work-perks {
-  margin-top: 204px;
+  margin-top: 12.75rem;
   display: flex;
-  width: 100%;
-  justify-content: center;
+  max-width: 1280px;
+  margin: 15rem auto 0;
+  justify-content: space-between;
   align-items: center;
+}
+
+//Left container
+.our-support {
+  width: 50%;
 }
 
 .perks {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  row-gap: 67px;
-  width: 550px;
-  height: 350px;
-}
-
-//Left container
-.our-support {
-  width: 550px;
-  height: 350px;
+  row-gap: 2.188rem;
 }
 
 //Right container
 .why-WFO {
   background-color: $black;
-  width: 540px;
-  height: 421px;
+  width: 49%;
+  height: 100%;
   text-align: left;
 }
 
 .head {
-  width: 433px;
-  height: 132px;
-  margin: 54px 54px 0px 53px;
+  width: 100%;
+  padding: 3.2rem 1.37rem 1rem 3.37rem;
 }
 
 .frame {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0px;
-  gap: 15px;
-  width: 307px;
-  height: 30px;
+  width: 65%;
   color: $white;
 }
 
@@ -143,16 +137,15 @@ $roboto: 'Roboto Condensed', sans-serif;
   color: $white;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 1.25rem;
+  line-height: 1.87rem;
 }
 
 .wfo-hr {
-  width: 73px;
-  height: 2px;
+  width: 4.5rem;
+  height: 0.12rem;
   background: $white;
   align-items: center;
-  margin-bottom: 5px;
 }
 
 .title-WFO {
@@ -160,9 +153,9 @@ $roboto: 'Roboto Condensed', sans-serif;
   font-family: $roboto;
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 47px;
-  margin-top: 8px;
-  margin-bottom: 32px;
+  font-size: 2.5rem;
+  line-height: 2.93rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
 }
 </style>
