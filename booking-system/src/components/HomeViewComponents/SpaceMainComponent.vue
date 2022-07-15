@@ -48,10 +48,7 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 .container{
     width: 1100px;
     margin: auto;
@@ -68,11 +65,11 @@ a{
   }
   &__title{
     font-family: 'Roboto Condensed';
-        font-size: 40px;
-        font-style: normal;
-        color: #231F20;
-        font-weight: 700;
-        line-height: 61px;
+      font-size: 40px;
+      font-style: normal;
+      color: #231F20;
+      font-weight: 700;
+      line-height: 61px;
   }
   &__text{
     width: 452px;
