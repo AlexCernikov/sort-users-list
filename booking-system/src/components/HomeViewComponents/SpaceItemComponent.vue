@@ -139,6 +139,7 @@ a{
     font-weight: 400;
     font-size: 32px;
     line-height: 38px;
+    text-align: center;
   }
   &__hover-text{
     font-family: 'Lato';
@@ -146,6 +147,7 @@ a{
     font-weight: 500;
     font-size: 18px;
     line-height: 28px;
+    text-align: center;
   }
   &__hover-btn{
     position: absolute;
