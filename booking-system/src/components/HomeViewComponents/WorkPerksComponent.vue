@@ -89,17 +89,15 @@ $black: #231f20;
 $lato: 'Lato', sans-serif;
 $roboto: 'Roboto Condensed', sans-serif;
 
-//Main container
 .work-perks {
   margin-top: 12.75rem;
   display: flex;
   max-width: 1280px;
   margin: 15rem auto 0;
-  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
-//Left container
 .our-support {
   width: 50%;
 }
@@ -108,13 +106,12 @@ $roboto: 'Roboto Condensed', sans-serif;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  row-gap: 2.188rem;
+  row-gap: 3rem;
 }
 
-//Right container
 .why-WFO {
   background-color: $black;
-  width: 49%;
+  width: 50%;
   height: 100%;
   text-align: left;
 }
