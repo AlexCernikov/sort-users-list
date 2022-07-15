@@ -6,6 +6,7 @@
     <div class="main-content">
       <router-view/>
       <MapComponent />
+      <BecomeMemberComponent />
     </div>
   </div>
   <footer class="footer-bar">
@@ -17,6 +18,7 @@
 import { defineComponent } from 'vue';
 import FooterComponent from '@/components/CommonComponents/FooterComponent.vue';
 import MapComponent from '@/components/CommonComponents/MapComponent.vue';
+import BecomeMemberComponent from '@/components/CommonComponents/BecomeMemberComponent.vue';
 import NavBarComponent from './components/CommonComponents/NavBarComponent.vue';
 
 export default defineComponent({
@@ -24,6 +26,7 @@ export default defineComponent({
   components: {
     NavBarComponent,
     MapComponent,
+    BecomeMemberComponent,
     FooterComponent,
   },
 });
@@ -40,7 +43,7 @@ export default defineComponent({
 }
 
 header {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -56,7 +59,7 @@ header {
 
   .main-content {
     flex: 1;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     border-left: 1px solid black;
     border-right: 1px solid black;
