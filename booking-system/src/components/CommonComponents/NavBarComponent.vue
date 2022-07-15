@@ -1,11 +1,11 @@
 <template>
     <nav>
-      <div class="nav__logoSide">
+      <div class="nav__logo_side">
         <router-link to="/">
           <img src="@/assets/ISD_Logo.svg" alt="ISD_Logo">
         </router-link>
       </div>
-      <div class="nav__clientSide">
+      <div class="nav__client_side">
         <router-link to="/">Home</router-link>
         <router-link to="/bookSpace">Book a Space</router-link>
         <router-link to="/spaceOptions">Space Options</router-link>
@@ -13,7 +13,7 @@
         <router-link to="/reviews">Reviews</router-link>
         <router-link to="/contactUs">Contact Us</router-link>
       </div>
-      <div class="nav__adminSide">
+      <div class="nav__admin_side">
         <div class="adminBtn">
           <router-link to="/logIn">Log in</router-link>
         </div>
@@ -29,8 +29,17 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 24px 0;
+  margin: 24px auto;
   max-width: 1280px;
+
+  &__logo_side {
+    margin-left: -28px;
+  }
+
+  &__client_side {
+    display: flex;
+    justify-content: space-between;
+  }
 
   a {
     text-decoration: none;
@@ -41,11 +50,7 @@ nav {
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.75rem;
-    margin-left: 40px;
-  }
-
-  .nav__logoSide {
-    margin-left: -28px;
+    margin-left: 20px;
   }
 
   .adminBtn {

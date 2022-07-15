@@ -43,7 +43,7 @@ export default defineComponent({
 }
 
 header {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -59,7 +59,7 @@ header {
 
   .main-content {
     flex: 1;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     border-left: 1px solid black;
     border-right: 1px solid black;
