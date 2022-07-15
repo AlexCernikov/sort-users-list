@@ -64,7 +64,12 @@ export default defineComponent({
           header: '500 Mbps',
           description: 'Internet speed',
         },
-        { src: 'user.svg', alt: 'user', header: '∞', description: 'Cups of coffee' },
+        {
+          src: 'user.svg',
+          alt: 'user',
+          header: '∞',
+          description: 'Cups of coffee',
+        },
         {
           src: 'colleagues.svg',
           alt: 'colleagues',
