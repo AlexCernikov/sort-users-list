@@ -9,7 +9,7 @@
 <script lang="ts">
 
 import { defineComponent } from 'vue';
-import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionComponent.vue'; 
+import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionComponent.vue';
 import SpaceMainComponent from '@/components/HomeViewComponents/SpaceMainComponent.vue';
 import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
 
