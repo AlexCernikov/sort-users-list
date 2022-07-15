@@ -1,0 +1,148 @@
+[1mdiff --git a/.idea/.gitignore b/.idea/.gitignore[m
+[1mindex 6f99d4c..49b841e 100644[m
+[1m--- a/.idea/.gitignore[m
+[1m+++ b/.idea/.gitignore[m
+[36m@@ -1,5 +1,5 @@[m
+ # Default ignored files[m
+ /shelf/[m
+[31m-/workspace.xml[m
+[32m+[m[32m.idea\workspace.xml[m[41m[m
+ # Editor-based HTTP Client requests[m
+ /httpRequests/[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..411b881[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/inspectionProfiles/Project_Default.xml[m
+[36m@@ -0,0 +1,21 @@[m
+[32m+[m[32m<component name="InspectionProjectProfileManager">[m
+[32m+[m[32m  <profile version="1.0">[m
+[32m+[m[32m    <option name="myName" value="Project Default" />[m
+[32m+[m[32m    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">[m
+[32m+[m[32m      <option name="myValues">[m
+[32m+[m[32m        <value>[m
+[32m+[m[32m          <list size="7">[m
+[32m+[m[32m            <item index="0" class="java.lang.String" itemvalue="nobr" />[m
+[32m+[m[32m            <item index="1" class="java.lang.String" itemvalue="noembed" />[m
+[32m+[m[32m            <item index="2" class="java.lang.String" itemvalue="comment" />[m
+[32m+[m[32m            <item index="3" class="java.lang.String" itemvalue="noscript" />[m
+[32m+[m[32m            <item index="4" class="java.lang.String" itemvalue="embed" />[m
+[32m+[m[32m            <item index="5" class="java.lang.String" itemvalue="script" />[m
+[32m+[m[32m            <item index="6" class="java.lang.String" itemvalue="herosectioncomponent" />[m
+[32m+[m[32m          </list>[m
+[32m+[m[32m        </value>[m
+[32m+[m[32m      </option>[m
+[32m+[m[32m      <option name="myCustomValuesEnabled" value="true" />[m
+[32m+[m[32m    </inspection_tool>[m
+[32m+[m[32m  </profile>[m
+[32m+[m[32m</component>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/workspace.xml b/.idea/workspace.xml[m
+[1mindex b9c0c9e..b83de6b 100644[m
+[1m--- a/.idea/workspace.xml[m
+[1m+++ b/.idea/workspace.xml[m
+[36m@@ -1,12 +1,31 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <project version="4">[m
+   <component name="ChangeListManager">[m
+[31m-    <list default="true" id="387f5d79-cb88-4f43-8b44-6036a81cce66" name="Changes" comment="" />[m
+[32m+[m[32m    <list default="true" id="387f5d79-cb88-4f43-8b44-6036a81cce66" name="Changes" comment="">[m
+[32m+[m[32m      <change afterPath="$PROJECT_DIR$/booking-system/src/assets/ISD_Logo.png" afterDir="false" />[m
+[32m+[m[32m      <change afterPath="$PROJECT_DIR$/booking-system/src/components/CommonComponents/ISD_Logo.svg" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/package-lock.json" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/package.json" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/App.vue" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/src/components/CommonComponents/NavBarComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/components/CommonComponents/NavBarComponent.vue" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/src/components/HomeViewComponents/HeroSectionComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/components/HomeViewComponents/HeroSectionComponent.vue" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/src/views/ContactUsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/views/ContactUsView.vue" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/booking-system/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/booking-system/src/views/HomeView.vue" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />[m
+[32m+[m[32m    </list>[m
+     <option name="SHOW_DIALOG" value="false" />[m
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />[m
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />[m
+     <option name="LAST_RESOLUTION" value="IGNORE" />[m
+   </component>[m
+[32m+[m[32m  <component name="FileTemplateManagerImpl">[m
+[32m+[m[32m    <option name="RECENT_TEMPLATES">[m
+[32m+[m[32m      <list>[m
+[32m+[m[32m        <option value="SCSS File" />[m
+[32m+[m[32m      </list>[m
+[32m+[m[32m    </option>[m
+[32m+[m[32m  </component>[m
+   <component name="Git.Settings">[m
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />[m
+   </component>[m
+[36m@@ -24,7 +43,9 @@[m
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,[m
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,[m
+     &quot;last_opened_file_path&quot;: &quot;D:/ISD Moldova/internship-booking-system&quot;,[m
+[31m-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,[m
+[32m+[m[32m    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,[m
+[32m+[m[32m    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,[m
+[32m+[m[32m    &quot;ts.external.directory.path&quot;: &quot;D:\\ISD Moldova\\internship-booking-system\\booking-system\\node_modules\\typescript\\lib&quot;,[m
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;[m
+   }[m
+ }</component>[m
+[36m@@ -53,20 +74,5 @@[m
+         </entry>[m
+       </map>[m
+     </option>[m
+[31m-    <option name="RECENT_FILTERS">[m
+[31m-      <map>[m
+[31m-        <entry key="Branch">[m
+[31m-          <value>[m
+[31m-            <list>[m
+[31m-              <RecentGroup>[m
+[31m-                <option name="FILTER_VALUES">[m
+[31m-                  <option value="origin/feature/NavBarComponent" />[m
+[31m-                </option>[m
+[31m-              </RecentGroup>[m
+[31m-            </list>[m
+[31m-          </value>[m
+[31m-        </entry>[m
+[31m-      </map>[m
+[31m-    </option>[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/booking-system/.gitignore b/booking-system/.gitignore[m
+[1mindex 403adbc..4117849 100644[m
+[1m--- a/booking-system/.gitignore[m
+[1m+++ b/booking-system/.gitignore[m
+[36m@@ -21,3 +21,4 @@[m [mpnpm-debug.log*[m
+ *.njsproj[m
+ *.sln[m
+ *.sw?[m
+[32m+[m[32m.idea\workspace.xml[m
+\ No newline at end of file[m
+[1mdiff --git a/booking-system/package-lock.json b/booking-system/package-lock.json[m
+[1mindex 50e2cb7..e50fa16 100644[m
+[1m--- a/booking-system/package-lock.json[m
+[1m+++ b/booking-system/package-lock.json[m
+[36m@@ -8,7 +8,10 @@[m
+       "name": "hello-world",[m
+       "version": "0.1.0",[m
+       "dependencies": {[m
+[32m+[m[32m        "@popperjs/core": "^2.11.5",[m
+[32m+[m[32m        "bootstrap": "^5.2.0-beta1",[m
+         "core-js": "^3.8.3",[m
+[32m+[m[32m        "normalize.css": "^8.0.1",[m
+         "vue": "^3.2.13",[m
+         "vue-router": "^4.0.3",[m
+         "vuex": "^4.0.0"[m
+[36m@@ -30,7 +33,9 @@[m
+         "eslint-plugin-vuejs-accessibility": "^1.1.0",[m
+         "sass": "^1.32.7",[m
+         "sass-loader": "^12.0.0",[m
+[31m-        "typescript": "~4.5.5"[m
+[32m+[m[32m        "typescript": "~4.5.5",[m
+[32m+[m[32m        "vue-svg-loader": "^0.10.0",[m
+[32m+[m[32m        "vue-template-compiler": "^2.7.5"[m
+       }[m
+     },[m
+     "node_modules/@achrinza/node-ipc": {[m
+[36m@@ -1926,6 +1931,15 @@[m
+       "integrity"
