@@ -10,7 +10,6 @@
       <SpaceItemComponent :space="space" />
     </div>
     </div>
-    <SpaceItemComponent v-for="item in space" :key="item"/>
  </section>
 </template>
 <script lang="ts">

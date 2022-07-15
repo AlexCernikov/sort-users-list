@@ -3,6 +3,7 @@
     <HeroSectionComponent/>
     <SpaceMainComponent />
     <WorkPerksComponent />
+    <!-- <FaqComponent /> -->
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import { defineComponent } from 'vue';
 import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionComponent.vue';
 import SpaceMainComponent from '@/components/HomeViewComponents/SpaceMainComponent.vue';
+// import FaqComponent from '@/components/HomeViewComponents/FaqComponent.vue';
 import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
 
 export default defineComponent({
@@ -19,6 +21,7 @@ export default defineComponent({
     HeroSectionComponent,
     SpaceMainComponent,
     WorkPerksComponent,
+    // FaqComponent,
   },
 });
 </script>
