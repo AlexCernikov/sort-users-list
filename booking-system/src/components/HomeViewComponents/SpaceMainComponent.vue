@@ -7,7 +7,13 @@
         <p class="our-spaces__text"> Our space is designed to give you a different experience when working with your team or personally </p>
         </div>
     <div class="space">
-      <SpaceItemComponent :space="space" />
+      <SpaceItemComponent
+      v-for="(item, index) in space"
+          :key="index"
+          :name="item.name"
+          :description="item.description"
+          :imgUrl="item.imgUrl"
+       />
     </div>
     </div>
  </section>
@@ -50,7 +56,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .container{
-    width: 1100px;
+    max-width: 1280px;
     margin: auto;
 }
 a{

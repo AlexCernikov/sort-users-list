@@ -1,8 +1,8 @@
 <template>
-    <div class="space__item" v-for="item in space" :key="item">
+    <div class="space__item">
       <div class="space__img">
 <img class="space__images"
-              :src="require(`@/assets/spacesection/` + item.imgUrl)" alt="image">
+              :src="require(`@/assets/spacesection/` + imgUrl)" alt="image">
       </div>
               <a class="space__link" href="#">
                 <div class="space__button">
@@ -13,10 +13,10 @@
                     <img class="space__hover-lines"
                     src="../../assets/spacesection/lines.svg" alt="lines">
                   <h6 class="space__hover-title">
-                 {{item.name}}
+                 {{name}}
                 </h6>
                <p class="space__hover-text">
-                {{item.description}}
+                {{description}}
                </p>
                <button class="space__hover-btn">Check avaibility
                     <img class="space__hover-svg"
@@ -27,7 +27,7 @@
               </a>
              <div class="space__info">
                <p class="space__info-text">
-                {{item.name}}
+                {{name}}
                </p>
                </div>
              </div>
@@ -39,8 +39,14 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'spaceSectionComponent',
   props: {
-    space: {
-      type: Array,
+    name: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    imgUrl: {
+      type: String,
     },
   },
 });
