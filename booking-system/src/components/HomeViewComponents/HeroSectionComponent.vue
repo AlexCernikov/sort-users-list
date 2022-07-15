@@ -71,7 +71,6 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-
 img {
   right: 20%;
   position:relative;
@@ -86,7 +85,6 @@ img {
 
 span {
   color: #FF5A00;
-
 }
 
 h2 {
