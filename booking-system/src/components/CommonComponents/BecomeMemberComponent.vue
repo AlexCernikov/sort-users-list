@@ -13,7 +13,7 @@
                 </div>
             </section>
             <section class="member-content__smiling_man">
-                <img src="@/assets/smiling_man.png" alt="A smiling man." class="smiling_man__img">
+                <img src="@/assets/smiling_man.png" alt="A smiling man" class="smiling_man__img">
             </section>
         </div>
     </div>
@@ -39,7 +39,7 @@ $button_color: #FF5A00;
             width: 49%;
             font-style: normal;
             color: #FFFFFF;
-            font-size: 1.25rem;
+            font-size: 20px;
             font-family: 'Lato', sans-serif;
             &__title {
                 display: flex;
@@ -50,7 +50,7 @@ $button_color: #FF5A00;
             h1 {
                 font-family: 'Roboto Condensed', sans-serif;
                 font-weight: 700;
-                font-size: 2.5rem;
+                font-size: 40px;
                 line-height: 47px;
                 margin-bottom: 24px;
                 margin-top: 8px;
