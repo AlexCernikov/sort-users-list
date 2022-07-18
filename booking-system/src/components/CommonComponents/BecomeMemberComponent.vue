@@ -33,6 +33,7 @@ $button_color: #FF5A00;
 
     .member-content {
         max-width: 1280px;
+        width: 95%;
         height: 100%;
         display: flex;
         justify-content: space-between;
