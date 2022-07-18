@@ -83,6 +83,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
+@import 'public/styles.scss';
+
 h2 {
     font-family: $roboto;
     font-size: clamp(2rem, 3vw, 4rem);
