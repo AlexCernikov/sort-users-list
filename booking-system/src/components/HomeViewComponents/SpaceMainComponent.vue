@@ -103,5 +103,16 @@ line-height: 28px;
   .space{
     flex-direction: column;
   }
+  .our-spaces__top{
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .our-spaces__title{
+    margin: 0;
+  }
+  .our-spaces__text{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 }
 </style>

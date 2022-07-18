@@ -16,7 +16,6 @@
       <p class="faq__question">More questions</p>
     </a>
     </div>
-    <div class="test"></div>
  </section>
 </template>
 <script lang="ts">
@@ -98,11 +97,6 @@ a{
     transform: rotate(90deg);
   }
 }
-.test{
-  width: 100%;
-  height: 150px;
-  background-color: aqua;
-}
 @media screen and (max-width: 992px){
   .faq__title{
     width: 75%;
@@ -111,6 +105,7 @@ a{
 @media screen and (max-width: 768px){
   .faq__dir{
     flex-direction: column;
+    margin-top: 1.5rem;
   }
   .faq__question{
     font-size: 1.5rem;
@@ -121,6 +116,9 @@ a{
     right: -27px;
     background-size: cover;
   }
+  }
+  .faq__title{
+    margin: 0 auto;
   }
 }
 </style>
