@@ -2,8 +2,8 @@
   <div class="home">
     <HeroSectionComponent/>
     <SpaceMainComponent />
-    <FacilitiesComponent />
     <WorkPerksComponent />
+    <FacilitiesComponent />
   </div>
 </template>
 
