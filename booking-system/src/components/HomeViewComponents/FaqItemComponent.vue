@@ -44,13 +44,13 @@ a{
     cursor: pointer;
     padding: 40px 40px;
     margin-right: 10px;
-    border: 1px solid black;
+    border: 1px solid #FF5A00;
     &__title{
       font-family: 'Roboto Condensed';
       font-style: normal;
       font-weight: 400;
-      font-size: 26px;
-      line-height: 30px;
+      font-size: 1.625rem;
+      line-height: 1.875rem;
       text-align: center;
       margin: 0;
     }
@@ -111,4 +111,13 @@ a{
  .faq-item:last-child{
       margin-right: 0;
     }
+    @media screen and (max-width: 768px){
+  .faq-item{
+    width: 75%;
+    &__title{
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+}
 </style>

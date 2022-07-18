@@ -16,6 +16,7 @@
       <p class="faq__question">More questions</p>
     </a>
     </div>
+    <div class="test"></div>
  </section>
 </template>
 <script lang="ts">
@@ -58,7 +59,7 @@ a{
     &__title{
     @extend %title-font;
     text-align: center;
-    width: 578px;
+    width: 45%;
     margin: 115px auto 62px;
     color: $brand-color;
     }
@@ -94,6 +95,16 @@ a{
   }
   &:hover::after{
     transform: rotate(90deg);
+  }
+}
+.test{
+  width: 100%;
+  height: 150px;
+  background-color: aqua;
+}
+@media screen and (max-width: 768px){
+  .faq__dir{
+    flex-direction: column;
   }
 }
 </style>
