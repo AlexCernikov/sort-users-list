@@ -22,7 +22,7 @@ export default defineComponent({
   },
   methods: {
     goToPage() {
-      this.$router.push('/ourSpaces');
+      this.$router.push('/faqView');
     },
   },
 });
@@ -66,6 +66,7 @@ a{
       justify-content: center;
       align-self: center;
       cursor: pointer;
+      border: none;
     }
     &__btn-arrow{
       mask: url(../../assets/faqsection/arrow-down.svg);

@@ -96,6 +96,7 @@ a{
   &__img{
     width: 350px;
     height: 419px;
+    margin-bottom: 25px;
   }
   &__images{
     object-fit: cover;
@@ -152,7 +153,7 @@ a{
   }
   &__hover-btn{
     position: absolute;
-    background-color: chocolate;
+    background-color: #FF5A00;
     width: 252px;
     height: 72px;
     bottom: 0;
@@ -167,6 +168,7 @@ a{
     font-size: 18px;
     line-height: 22px;
     color: #ffffff;
+    border: none;
   }
   &__hover-svg{
     padding-left: 30px;
