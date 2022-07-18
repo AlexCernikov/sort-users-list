@@ -22,6 +22,10 @@
 <style scoped lang="scss">
 $container_color: #231F20;
 $button_color: #FF5A00;
+@function toRem($value) {
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+}
 .member-container {
     width: 100%;
     height: auto;
@@ -39,7 +43,7 @@ $button_color: #FF5A00;
             width: 49%;
             font-style: normal;
             color: #FFFFFF;
-            font-size: 20px;
+            font-size: toRem(20);
             font-family: 'Lato', sans-serif;
             &__title {
                 display: flex;
@@ -50,19 +54,19 @@ $button_color: #FF5A00;
             h1 {
                 font-family: 'Roboto Condensed', sans-serif;
                 font-weight: 700;
-                font-size: 40px;
-                line-height: 47px;
+                font-size: toRem(40);
+                line-height: toRem(47);
                 margin-bottom: 24px;
                 margin-top: 8px;
             }
             h3 {
                 font-weight: 500;
-                line-height: 30px;
+                line-height: toRem(30);
                 margin: 0 10px 0 0;
             }
             p {
                 font-weight: 400;
-                line-height: 30px;
+                line-height: toRem(30);
                 margin-bottom: 33px;
             }
             &__btn {
@@ -78,8 +82,8 @@ $button_color: #FF5A00;
                     color: #FFFFFF;
                     font-family: 'Lato', sans-serif;
                     font-weight: 700;
-                    font-size: 1.125rem;
-                    line-height: 1.75px;
+                    font-size: toRem(18);
+                    line-height: toRem(28);
                     margin: 0;
                 }
             }

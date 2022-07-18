@@ -21,10 +21,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import PerkComponent from './PerkComponent.vue';
+
 export default defineComponent({
   name: 'NavBarComponent',
-  // components: { PerkComponent },
   data() {
     return {
       navButtons: [
@@ -59,6 +58,11 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@function toRem($value) {
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -75,20 +79,23 @@ export default defineComponent({
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.75rem;
+    font-size: toRem(16);
+    line-height: toRem(28);
     padding: 0 10px;
     width: auto;
     &--sign {
+      @extend .navButton;
       white-space: nowrap;
       background-color: #231F20;
-      text-decoration: none;
       box-shadow: 0 4px 16px rgba(255, 87, 34, 0.32);
       color: #FFFFFF;
       padding: 12px 20px;
       margin-left: 15px;
     }
   }
+  .navButton:hover {
+      border-bottom: 2px solid #2c3e50;
+    }
   .navButton--sign:hover {
     transition-duration: 0.5s;
       background-color: #FF5A00;
