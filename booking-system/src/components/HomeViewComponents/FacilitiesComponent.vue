@@ -81,7 +81,7 @@ export default defineComponent({
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
@@ -121,6 +121,7 @@ img {
 }
 
 .facilities--container {
+  margin-top: 100px;
     min-width: 100vw;
     display: flex;
     justify-content: center;
