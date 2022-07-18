@@ -4,7 +4,6 @@
 <img class="space__images"
               :src="require(`@/assets/spacesection/` + imgUrl)" alt="image">
       </div>
-              <!-- <a class="space__link" href="#"> -->
                 <div class="space__button">
                   <img class="space__svg" src="../../assets/spacesection/arrow.svg" alt="svg">
                 </div>
@@ -24,7 +23,6 @@
                   </button>
                   </div>
              </div>
-              <!-- </a> -->
              <div class="space__info">
                <p class="space__info-text">
                 {{name}}
@@ -51,7 +49,7 @@ export default defineComponent({
   },
   methods: {
     goToPageSpaces() {
-      this.$router.push('/faqView');
+      this.$router.push('/ourSpacesView');
     },
   },
 });
