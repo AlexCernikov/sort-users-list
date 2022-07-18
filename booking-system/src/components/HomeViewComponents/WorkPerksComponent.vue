@@ -84,11 +84,7 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-$white: #ffffff;
-$black: #231f20;
-$lato: 'Lato', sans-serif;
-$roboto: 'Roboto Condensed', sans-serif;
-
+@import 'public/styles.scss';
 .work-perks {
   margin-top: 12.75rem;
   display: flex;
