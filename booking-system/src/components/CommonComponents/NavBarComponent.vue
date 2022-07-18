@@ -14,12 +14,10 @@
         </div>
         <div class="nav__guest" :class="toggle ? mobile : ''">
           <div v-for="(navBtn, index) in navButtons" :key="index">
-            <router-link class="navButton" :to="navBtn.path">{{ navBtn.name }}</router-link>
+            <router-link
+                :class="navBtn.path!=='/signUp' ? 'navButton' : 'navButton--sign'"
+                :to="navBtn.path">{{ navBtn.name }}</router-link>
           </div>
-        </div>
-        <div class="nav__profile" :class="toggle ? mobile : ''">
-          <router-link to="/logIn" class="navButton">Log in</router-link>
-          <router-link to="/signUp" class="navButton--sign">Sign Up</router-link>
         </div>
       </div>
     </nav>
@@ -59,6 +57,14 @@ export default defineComponent({
           path: '/contactUs',
           name: 'Contact Us',
         },
+        {
+          path: '/logIn',
+          name: 'Log In',
+        },
+        {
+          path: '/signUp',
+          name: 'Sign Up',
+        },
       ],
     };
   },
@@ -70,13 +76,13 @@ export default defineComponent({
     $remValue: ($value / 16) + rem;
     @return $remValue;
 }
-
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 24px auto;
-  width: 95%;
+  padding: 0 1rem;
+  width: 100%;
   max-width: 1280px;
 
   .navButton {
@@ -109,43 +115,35 @@ export default defineComponent({
     transition-duration: 0.5s;
       background-color: #FF5A00;
   }
-
   &__logo {
     width: auto;
   }
-
   .menuBtn {
     display: none;
   }
-
   &__guest {
     display: flex;
     justify-content: space-between;
-    padding: 0 5px;
-  }
-
-  &__profile {
-    display: flex;
-    justify-content: flex-end;
     align-items: center;
-    width: auto;
+    padding: 0 5px;
   }
 }
 
   @media (max-width: 992px) {
  .nav {
   display: flex;
+  padding: 0 0.8rem;
   flex-direction: column;
-  width: 90%;
+
+  .navButton {
+    font-size: toRem(15);
+  }
   &__logo {
     width: auto;
+    margin-bottom: 5px;
     align-self: flex-start;
   }
   &__guest{
-    padding: 10px;
-    justify-content: space-around;
-  }
-  &__profile {
     align-self: flex-end;
   }
   .isd_logo {
@@ -159,6 +157,7 @@ export default defineComponent({
 .nav {
   display: block;
   width: 100%;
+  padding: 0;
   margin: 0 auto 20px;
 
   .navButton {
@@ -195,9 +194,6 @@ export default defineComponent({
   .enable {
       display: block;
     }
-  &__profile {
-    display: none;
-  }
   .menuBtn {
     display: inline-block;
   }
