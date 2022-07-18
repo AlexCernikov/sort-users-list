@@ -1,10 +1,10 @@
 <template>
-    <div class="space__item">
+    <div class="space__item" @click="goToPageSpaces" @keypress="bar">
       <div class="space__img">
 <img class="space__images"
               :src="require(`@/assets/spacesection/` + imgUrl)" alt="image">
       </div>
-              <a class="space__link" href="#">
+              <!-- <a class="space__link" href="#"> -->
                 <div class="space__button">
                   <img class="space__svg" src="../../assets/spacesection/arrow.svg" alt="svg">
                 </div>
@@ -24,7 +24,7 @@
                   </button>
                   </div>
              </div>
-              </a>
+              <!-- </a> -->
              <div class="space__info">
                <p class="space__info-text">
                 {{name}}
@@ -49,6 +49,11 @@ export default defineComponent({
       type: String,
     },
   },
+  methods: {
+    goToPageSpaces() {
+      this.$router.push('/faqView');
+    },
+  },
 });
 </script>
 <style scoped lang="scss">
@@ -59,8 +64,13 @@ a{
 .space{
   &__item{
     position: relative;
-    width: 350px;
+    max-width: 350px;
     height: 467px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  &__item:last-child{
+    margin-right: 0;
   }
   &__info-text{
     font-family: 'Lato';
@@ -83,7 +93,7 @@ a{
     height: 72px;
     background-color: $btn-color;
   }
-    &__link:hover{
+    &__item:hover{
       .space__hover{
       opacity: 1;
       z-index: 1;
@@ -94,7 +104,7 @@ a{
     height: 10px;
   }
   &__img{
-    width: 350px;
+    max-width: 350px;
     height: 419px;
     margin-bottom: 25px;
   }

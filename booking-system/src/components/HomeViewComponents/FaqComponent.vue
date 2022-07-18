@@ -63,9 +63,10 @@ a{
     color: $brand-color;
     }
     &__container{
-      width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
       margin-bottom: 100px;
+      padding: 0 10px 0 10px;
     }
     &__dir{
       display: flex;
