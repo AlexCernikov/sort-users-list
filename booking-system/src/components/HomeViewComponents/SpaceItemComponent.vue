@@ -104,7 +104,7 @@ a{
   &__img{
     max-width: 350px;
     height: 419px;
-    margin-bottom: 25px;
+    margin-bottom: 0.9rem;
   }
   &__images{
     object-fit: cover;
@@ -180,6 +180,11 @@ a{
   }
   &__hover-svg{
     padding-left: 30px;
+  }
+}
+@media screen and (max-width: 768px){
+  .space__item{
+    margin: 0 0 2.2rem 0;
   }
 }
 </style>

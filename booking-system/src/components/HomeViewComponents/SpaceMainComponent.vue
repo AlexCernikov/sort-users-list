@@ -99,4 +99,9 @@ line-height: 28px;
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (max-width: 768px){
+  .space{
+    flex-direction: column;
+  }
+}
 </style>
