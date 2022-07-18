@@ -30,7 +30,7 @@ export default defineComponent({
 <style scoped lang="scss">
 @import "../../../public/styles.scss";
 .container{
-    max-width: 1100px;
+    max-width: 1280px;
     margin: auto;
 }
 a{
@@ -43,6 +43,8 @@ a{
     margin-bottom: 65px;
     cursor: pointer;
     padding: 40px 40px;
+    margin-right: 10px;
+    border: 1px solid black;
     &__title{
       font-family: 'Roboto Condensed';
       font-style: normal;
@@ -106,4 +108,7 @@ a{
       background-color: $btn-color;
     }
 }
+ .faq-item:last-child{
+      margin-right: 0;
+    }
 </style>

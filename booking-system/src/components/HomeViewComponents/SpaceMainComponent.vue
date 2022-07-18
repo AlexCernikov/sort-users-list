@@ -89,8 +89,8 @@ line-height: 28px;
   }
 }
 .space{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

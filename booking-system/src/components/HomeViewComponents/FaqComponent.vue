@@ -63,7 +63,7 @@ a{
     color: $brand-color;
     }
     &__container{
-      width: 1100px;
+      width: 1280px;
       margin: 0 auto;
       margin-bottom: 100px;
     }
