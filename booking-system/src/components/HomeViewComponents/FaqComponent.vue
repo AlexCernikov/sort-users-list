@@ -83,6 +83,7 @@ a{
   padding: 0;
   left: 50%;
   transform: translate(-50%);
+  font-size: 1rem;
   &:after{
     content:"";
     position: absolute;
@@ -102,9 +103,24 @@ a{
   height: 150px;
   background-color: aqua;
 }
+@media screen and (max-width: 992px){
+  .faq__title{
+    width: 75%;
+  }
+}
 @media screen and (max-width: 768px){
   .faq__dir{
     flex-direction: column;
+  }
+  .faq__question{
+    font-size: 1.5rem;
+    &:after{
+    width: 12.5px;
+    height: 21px;
+    top: 4px;
+    right: -27px;
+    background-size: cover;
+  }
   }
 }
 </style>
