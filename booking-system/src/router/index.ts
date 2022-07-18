@@ -12,6 +12,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'contactUs',
     component: () => import('../views/ContactUsView.vue'),
   },
+  {
+    path: '/faqView',
+    name: 'faqView',
+    component: () => import('../views/FaqView.vue'),
+  },
+  {
+    path: '/ourSpacesView',
+    name: 'ourSpacesView',
+    component: () => import('../views/OurSpacesView.vue'),
+  },
 ];
 
 const router = createRouter({

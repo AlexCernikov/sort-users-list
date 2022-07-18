@@ -1,7 +1,7 @@
 <template>
 <!-- eslint-disable max-len -->
  <section class="our-spaces">
-    <div class="container">
+    <div class="our-spaces__container">
         <div class="our-spaces__top">
         <h3 class="our-spaces__title">Our Spaces </h3>
         <p class="our-spaces__text"> Our space is designed to give you a different experience when working with your team or personally </p>
@@ -55,9 +55,11 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import "../../../public/styles.scss";
 .container{
-    max-width: 1280px;
+    max-width: 1300px;
     margin: auto;
+    padding: 0 10px 0 10px;
 }
 a{
   text-decoration: none;
@@ -68,6 +70,11 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  &__container{
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 10px 0 10px;
   }
   &__title{
     font-family: 'Roboto Condensed';
@@ -88,8 +95,24 @@ line-height: 28px;
   }
 }
 .space{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 768px){
+  .space{
+    flex-direction: column;
+  }
+  .our-spaces__top{
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .our-spaces__title{
+    margin: 0;
+  }
+  .our-spaces__text{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 }
 </style>
