@@ -83,16 +83,15 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import 'public/styles.scss';
 
 h2 {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: $roboto;
     font-size: clamp(2rem, 3vw, 4rem);
 }
 
 p {
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
@@ -111,7 +110,7 @@ img {
 }
 
 .selected {
-    background-color: #FF5A00;
+    background-color: $orange;
 }
 
 .facilities--gallery {
@@ -159,7 +158,7 @@ li {
 }
 
 li:hover {
-    background-color: #FF5A00;
+    background-color: $orange;
     cursor: pointer;
 }
 

@@ -75,6 +75,9 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+
+@import 'public/styles.scss';
+
 img {
   width: 45vw;
   min-width: 500px;
@@ -95,13 +98,13 @@ img {
 }
 
 span {
-  color: #FF5A00;
+  color: $orange;
 }
 
 h2 {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: $roboto;
   font-style: normal;
-  color: #231F20;
+  color: $aubergine;
   font-weight: 700;
   font-size: 52px;
   line-height: 61px;
@@ -113,7 +116,7 @@ h2 {
 
 .hero--description {
   margin-top: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: $lato;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -151,7 +154,7 @@ h2 {
   position: relative;
   width: 350px;
   height: 450px;
-  background-color: #231F20;
+  background-color: $aubergine;
   display: grid;
   font-size: 1.5rem;
   flex-direction: column;
@@ -159,7 +162,7 @@ h2 {
 
 .hero--form > div {
   width: 80%;
-  background-color: black;
+  background-color: $black;
   margin: 15px auto;
   color: rgb(234, 234, 234);
 
@@ -170,9 +173,9 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FF5A00;
+  background-color: $orange;
   color: white;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: $roboto;
 }
 
 .hero--form > div:first-child {
@@ -183,7 +186,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: $roboto;
 }
 
 .left-content > p {
