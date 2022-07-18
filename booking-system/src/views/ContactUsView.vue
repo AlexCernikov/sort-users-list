@@ -1,5 +1,5 @@
 <template>
-  <div class="faqView">
-    <h1>This is the "FAQ" page. Under Development</h1>
+  <div class="contactUs">
+    <h1>This is the "Contact Us" page. Under Development</h1>
   </div>
 </template>

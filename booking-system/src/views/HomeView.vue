@@ -23,7 +23,6 @@ export default defineComponent({
     SpaceMainComponent,
     FaqComponent,
     WorkPerksComponent,
-    // FaqComponent,
   },
 });
 </script>
