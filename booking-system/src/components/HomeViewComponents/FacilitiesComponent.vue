@@ -97,7 +97,8 @@ p {
 }
 
 img {
-    width: 60vw;
+    width: 50vw;
+    padding-left: 20px;
 }
 
 .hidden {
