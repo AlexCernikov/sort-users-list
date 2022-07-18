@@ -55,6 +55,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import "../../../public/styles.scss";
 .container{
     max-width: 1280px;
     margin: auto;

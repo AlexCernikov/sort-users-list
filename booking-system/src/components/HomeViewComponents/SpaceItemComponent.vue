@@ -52,6 +52,7 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
+@import "../../../public/styles.scss";
 a{
   text-decoration: none;
 }
@@ -80,7 +81,7 @@ a{
     bottom: 48px;
     width: 72px;
     height: 72px;
-    background-color: #ff5a00;
+    background-color: $btn-color;
   }
     &__link:hover{
       .space__hover{
