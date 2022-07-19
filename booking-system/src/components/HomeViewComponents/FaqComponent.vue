@@ -9,9 +9,12 @@
       <FaqItemComponent
       v-for="(item, index) in faq"
           :key="index"
-          :name="faq.name">
-          </FaqItemComponent>
+          :name="item.name">
+      </FaqItemComponent>
     </div>
+    <a href="#">
+      <p class="faq__question">More questions</p>
+    </a>
     </div>
  </section>
 </template>
@@ -47,26 +50,75 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-.container{
-    width: 1100px;
-    margin: auto;
-}
+@import "../../../public/styles.scss";
 a{
   text-decoration: none;
 }
 .faq{
     &__title{
-    font-family: 'Roboto Condensed';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 47px;
+    @extend %title-font;
     text-align: center;
-    width: 578px;
-   margin: 115px auto 62px;
-    color: #231F20;
+    width: 45%;
+    margin: 115px auto 62px;
+    color: $brand-color;
     }
+    &__container{
+      max-width: 1300px;
+      margin: 0 auto;
+      margin-bottom: 100px;
+      padding: 0 10px 0 10px;
+    }
+    &__dir{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+}
+.faq__question{
+  color: $btn-color;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 1rem;
+  &:after{
+    content:"";
+    position: absolute;
+    background-image: url(../../assets/faqsection/arrow2.svg);
+    width: 9.5px;
+    height: 15px;
+    top: 1px;
+    right: -20px;
+    background-size: cover;
+  }
+  &:hover::after{
+    transform: rotate(90deg);
+  }
+}
+@media screen and (max-width: 992px){
+  .faq__title{
+    width: 75%;
+  }
+}
+@media screen and (max-width: 768px){
+  .faq__dir{
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+  .faq__question{
+    font-size: 1.5rem;
+    &:after{
+    width: 12.5px;
+    height: 21px;
+    top: 4px;
+    right: -27px;
+    background-size: cover;
+  }
+  }
+  .faq__title{
+    margin: 0 auto;
+  }
 }
 </style>

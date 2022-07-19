@@ -1,10 +1,9 @@
 <template>
-    <div class="space__item">
+    <div class="space__item" @click="goToPageSpaces" @keypress="bar">
       <div class="space__img">
 <img class="space__images"
               :src="require(`@/assets/spacesection/` + imgUrl)" alt="image">
       </div>
-              <a class="space__link" href="#">
                 <div class="space__button">
                   <img class="space__svg" src="../../assets/spacesection/arrow.svg" alt="svg">
                 </div>
@@ -24,7 +23,6 @@
                   </button>
                   </div>
              </div>
-              </a>
              <div class="space__info">
                <p class="space__info-text">
                 {{name}}
@@ -49,17 +47,28 @@ export default defineComponent({
       type: String,
     },
   },
+  methods: {
+    goToPageSpaces() {
+      this.$router.push('/ourSpacesView');
+    },
+  },
 });
 </script>
 <style scoped lang="scss">
+@import "../../../public/styles.scss";
 a{
   text-decoration: none;
 }
 .space{
   &__item{
     position: relative;
-    width: 350px;
+    max-width: 350px;
     height: 467px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  &__item:last-child{
+    margin-right: 0;
   }
   &__info-text{
     font-family: 'Lato';
@@ -80,9 +89,9 @@ a{
     bottom: 48px;
     width: 72px;
     height: 72px;
-    background-color: #ff5a00;
+    background-color: $btn-color;
   }
-    &__link:hover{
+    &__item:hover{
       .space__hover{
       opacity: 1;
       z-index: 1;
@@ -93,8 +102,9 @@ a{
     height: 10px;
   }
   &__img{
-    width: 350px;
+    max-width: 350px;
     height: 419px;
+    margin-bottom: 0.9rem;
   }
   &__images{
     object-fit: cover;
@@ -151,7 +161,7 @@ a{
   }
   &__hover-btn{
     position: absolute;
-    background-color: chocolate;
+    background-color: #FF5A00;
     width: 252px;
     height: 72px;
     bottom: 0;
@@ -166,9 +176,15 @@ a{
     font-size: 18px;
     line-height: 22px;
     color: #ffffff;
+    border: none;
   }
   &__hover-svg{
     padding-left: 30px;
+  }
+}
+@media screen and (max-width: 768px){
+  .space__item{
+    margin: 0 0 2.2rem 0;
   }
 }
 </style>

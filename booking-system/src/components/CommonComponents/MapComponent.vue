@@ -10,6 +10,6 @@
 <style scoped lang="scss">
 .map__container {
   width: 100%;
-  margin-top: 66px;
+  margin: 0 auto;
 }
 </style>
