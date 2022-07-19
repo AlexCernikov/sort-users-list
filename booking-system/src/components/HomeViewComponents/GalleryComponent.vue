@@ -1,130 +1,135 @@
 <template>
-  <section class='carousel'>
-    <slot :currentSlide='currentSlide' />
-    <div class='navigate'>
-      <div class='toggle-page left'>
-        <i @click='prevSlide' @keyup='prevSlide' class='fa-solid fa-chevron-left'></i>
+  <section>
+    <div class="gallery">
+      <div class="gallery__navigation">
+        <div class="gallery__navigation__item">
+          <div class="gallery__navigation__item__title">
+            <p>Our gallery</p>
+            <hr>
+          </div>
+          <h2 class="gallery__navigation__item__description">Take a look how it is cool to work from
+            office</h2>
+          <div class="gallery__navigation__item__arrows">
+            <i class="fa-solid fa-arrow-left-long"></i>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </div>
+        </div>
       </div>
-      <div class='toggle-page right'>
-        <i @click='nextSlide' @keyup='nextSlide' class='fa-solid fa-chevron-right'></i>
-      </div>
-    </div>
-    <div class='pagination'>
-      <span v-for='(slide, index) in getSlideCount'
-            :key='index'
-            :class='{active : index + 1 === currentSlide}'
-            @click='goToSlide(index)' @keyup='goToSlide'>
-      </span>
+      <Carousel :items-to-show="3.2" :wrap-around="true" class='gallery__carousel'>
+        <Slide v-for='(slide, index) in carouselSlides' :key="index"
+               class="gallery__carousel__slide">
+          <div class="gallery__carousel__item">
+            <img :src='require(`@/assets/gallery/${slide}.jpg`)' alt='gallery-image'/>
+          </div>
+        </Slide>
+
+        <template #addons>
+          <navigation/>
+          <pagination/>
+        </template>
+      </Carousel>
     </div>
   </section>
 </template>
 
-<script lang='ts'>
-import { onMounted, ref } from 'vue';
-/* eslint-disable */
+<script lang="ts">
+import { defineComponent } from 'vue';
+import 'vue3-carousel/dist/carousel.css';
+import {
+  Carousel, Navigation, Pagination, Slide,
+} from 'vue3-carousel';
 
-export default {
-  setup() {
-    const currentSlide: any = ref(1);
-    const getSlideCount: any = ref(null);
-    const autoPlayEnabled = ref(true);
-    const timeoutDuration = ref(5000);
-
-    onMounted(() => {
-      getSlideCount.value = document.querySelectorAll('.slide').length;
-    });
-
-    const nextSlide = () => {
-      if (currentSlide.value === getSlideCount.value) {
-        currentSlide.value = 1;
-        return;
-      }
-      currentSlide.value += 1;
-    };
-
-    const prevSlide = () => {
-      if (currentSlide.value === 1) {
-        currentSlide.value = getSlideCount.value;
-        return;
-      }
-      currentSlide.value -= 1;
-    };
-
-    const goToSlide = (index: number) => {
-      currentSlide.value = index + 1;
-    };
-
-    const autoPlay = () => {
-      setInterval(() => {
-        nextSlide();
-      }, timeoutDuration.value);
-    };
-
-    if (autoPlayEnabled.value) {
-      autoPlay();
-    }
-
-    return {
-      currentSlide,
-      nextSlide,
-      prevSlide,
-      getSlideCount,
-      goToSlide,
-    };
+export default defineComponent({
+  name: 'GalleryComponent',
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
   },
-};
+  setup() {
+    const carouselSlides = ['bg-1', 'bg-2', 'bg-3', 'bg-1', 'bg-2', 'bg-3', 'bg-1', 'bg-2', 'bg-3'];
+    return { carouselSlides };
+  },
+});
 </script>
 
-<style scoped lang='scss'>
-.navigate {
-  padding: 0 1rem;
-  height: 100%;
+<style scoped lang="scss">
+.gallery {
   width: 100%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  .toggle-page {
+  &__carousel {
+    width: 100%;
+    overflow: hidden;
     display: flex;
-    flex: 1;
+    flex-direction: column;
+    justify-content: center;
 
-    i {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      background-color: #FF5A00;
-      color: #FFFFFF;
+    &__slide {
+      width: 300px;
+      height: 250px;
+    }
+
+    &__item {
+      margin-right: 1rem;
     }
   }
 
-  .right {
+  &__navigation {
+    width: 100%;
+    display: flex;
     justify-content: flex-end;
-  }
-}
 
-.pagination {
-  position: absolute;
-  bottom: 1.5rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    &__item {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
 
-  span {
-    cursor: pointer;
-    width: 3rem;
-    height: 0.25rem;
-    background-color: #FFFFFF;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  }
+      &__title {
+        width: 22%;
+        display: flex;
+        align-items: center;
 
-  .active {
-    background-color: #FF5A00;
+        > p {
+          width: 10rem;
+          font-family: 'Lato', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1.25rem;
+          line-height: 1.875rem;
+          color: #222831;
+        }
+
+        hr {
+          width: 6rem;
+          height: 0.1rem;
+          background-color: #222831;
+        }
+      }
+
+      > h2 {
+        width: 100%;
+        margin-top: 0;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 3rem;
+        color: #231F20;
+      }
+
+      &__arrows {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+
+        i {
+          color: #fe5c1f;
+          font-size: 4rem;
+        }
+      }
+    }
   }
 }
 </style>
