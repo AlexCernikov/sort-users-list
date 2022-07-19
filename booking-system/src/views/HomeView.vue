@@ -1,11 +1,11 @@
 <template>
   <div class='home'>
-    <GalleryComponent/>
     <HeroSectionComponent/>
     <SpaceMainComponent/>
     <FaqComponent/>
     <WorkPerksComponent/>
     <FacilitiesComponent/>
+    <GalleryComponent/>
   </div>
 </template>
 
