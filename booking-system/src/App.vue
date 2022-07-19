@@ -61,8 +61,6 @@ header {
     flex: 1;
     width: 100%;
     margin: 0 auto;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
   }
 }
 

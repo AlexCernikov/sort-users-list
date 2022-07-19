@@ -15,10 +15,11 @@
           </div>
         </div>
       </div>
-      <Carousel :items-to-show="3.2" :wrap-around="true" class='gallery__carousel'>
+      <Carousel :items-to-show="4" :wrap-around="true"
+                class='carousel'>
         <Slide v-for='(slide, index) in carouselSlides' :key="index"
-               class="gallery__carousel__slide">
-          <div class="gallery__carousel__item">
+               class="carousel__slide">
+          <div class="carousel__item">
             <img :src='require(`@/assets/gallery/${slide}.jpg`)' alt='gallery-image'/>
           </div>
         </Slide>
@@ -58,23 +59,6 @@ export default defineComponent({
 .gallery {
   width: 100%;
 
-  &__carousel {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    &__slide {
-      width: 300px;
-      height: 250px;
-    }
-
-    &__item {
-      margin-right: 1rem;
-    }
-  }
-
   &__navigation {
     width: 100%;
     display: flex;
@@ -104,13 +88,14 @@ export default defineComponent({
         hr {
           width: 6rem;
           height: 0.1rem;
-          background-color: #222831;
+          border: 1px solid #222831;
         }
       }
 
       > h2 {
         width: 100%;
-        margin-top: 0;
+        margin-top: 0.2rem;
+        margin-bottom: 2rem;
         font-family: 'Roboto Condensed', sans-serif;
         font-style: normal;
         font-weight: 700;
@@ -123,13 +108,47 @@ export default defineComponent({
         display: flex;
         gap: 1rem;
         justify-content: flex-start;
+        padding-bottom: 2rem;
 
         i {
           color: #fe5c1f;
-          font-size: 4rem;
+          font-size: 3rem;
         }
       }
     }
   }
+
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__slide {
+      width: 400px;
+      height: 400px;
+      right: 15rem;
+    }
+
+    &__item {
+      display: flex;
+      width: 420px;
+      height: 350px;
+      margin-right: 1rem;
+    }
+  }
+}
+.carousel__slide > .carousel__item {
+  transform: scale(1);
+  opacity: 1;
+  transition: 0.5s;
+}
+.carousel__slide--visible > .carousel__item {
+  opacity: 1;
+}
+.carousel__slide--active > .carousel__item {
+  transform: scale(1.5);
+  z-index: 2;
 }
 </style>
