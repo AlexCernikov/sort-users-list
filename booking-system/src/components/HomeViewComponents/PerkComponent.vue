@@ -35,8 +35,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-$lato: 'Lato', sans-serif;
-$roboto: 'Roboto Condensed', sans-serif;
+@import '@/assets/fonts/fonts.scss';
 
 .perk-container {
   display: flex;

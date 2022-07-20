@@ -5,6 +5,7 @@
     <FaqComponent />
     <WorkPerksComponent />
     <FacilitiesComponent />
+    <ReviewsComponent />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import SpaceMainComponent from '@/components/HomeViewComponents/SpaceMainCompone
 import FaqComponent from '@/components/HomeViewComponents/FaqComponent.vue';
 import FacilitiesComponent from '@/components/HomeViewComponents/FacilitiesComponent.vue';
 import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
+import ReviewsComponent from '../components/HomeViewComponents/ReviewsComponent.vue'; //
 
 export default defineComponent({
   name: 'app',
@@ -25,6 +27,7 @@ export default defineComponent({
     FaqComponent,
     WorkPerksComponent,
     FacilitiesComponent,
+    ReviewsComponent,
   },
 });
 </script>
