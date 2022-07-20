@@ -1,43 +1,43 @@
 <template>
-  <section class="gallery">
-    <div class="gallery__navigation">
-      <div class="gallery__navigation__item">
-        <div class="gallery__navigation__item__title">
+  <section class='gallery'>
+    <div class='gallery__navigation'>
+      <div class='gallery__navigation__item'>
+        <div class='gallery__navigation__item__title'>
           <p>Our gallery</p>
           <hr>
         </div>
-        <h2 class="gallery__navigation__item__description">Take a look how it is cool to work from
+        <h2 class='gallery__navigation__item__description'>Take a look how it is cool to work from
           office</h2>
       </div>
     </div>
-    <Carousel :settings="settings"
+    <Carousel :settings='settings'
               :breakpoints='breakpoints'
-              :wrap-around="true"
-              :autoplay="5000"
-              class='carousel'>
-      <Slide v-for='(slide, index) in carouselSlides' :key="index"
-             class="carousel__slide">
-        <div class="carousel__item">
-          <img :src='require(`@/assets/gallery/${slide}.jpg`)' alt='gallery-image'/>
+              :wrap-around='true'
+              :autoplay='5000'
+              class='carousel gallery__carousel'>
+      <Slide v-for='(slide, index) in carouselSlides' :key='index'
+             class='carousel__slide'>
+        <div class='carousel__item'>
+          <img :src='require(`@/assets/gallery/${slide}.jpg`)' alt='gallery-image' />
         </div>
       </Slide>
 
-      <template #addons="{ slidesCount }">
-        <navigation v-if="windowWidth >= 992 && slidesCount > 1">
+      <template #addons='{ slidesCount }'>
+        <navigation v-if='windowWidth >= 1200 && slidesCount > 1'>
           <template #next>
-            <span><i class="fa-solid fa-arrow-right-long"></i></span>
+            <img src='@/assets/arrow.svg' alt='forward' />
           </template>
           <template #prev>
-            <span><i class="fa-solid fa-arrow-left-long"></i></span>
+            <img class='arrow__back' src='@/assets/arrow.svg' alt='back' />
           </template>
         </navigation>
-        <pagination/>
+        <pagination />
       </template>
     </Carousel>
   </section>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
 import { defineComponent } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import {
@@ -64,6 +64,9 @@ export default defineComponent({
         itemsToShow: 2.5,
       },
       1200: {
+        itemsToShow: 2.8,
+      },
+      1400: {
         itemsToShow: 3.5,
       },
       1600: {
@@ -82,7 +85,69 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang='scss'>
+@import 'public/styles.scss';
+
+.arrow__back {
+  transform: rotate(180deg);
+}
+
+.gallery__carousel {
+  .carousel__pagination {
+    padding: 0;
+  }
+
+  .carousel__pagination-button {
+    margin: 0;
+    width: 2rem;
+    height: 0.3rem;
+    border-radius: 0;
+    border: 0;
+    background-color: $gainsboro;
+    transition-duration: 0.5s;
+  }
+
+  .carousel__pagination-button--active {
+    background-color: $orange;
+  }
+
+  .carousel__prev,
+  .carousel__next {
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border-radius: 0;
+    width: 100px;
+    height: 100px;
+    font-size: calc(100px * 2 / 3);
+  }
+
+  .carousel__prev {
+    top: 5%;
+    left: 52%;
+  }
+
+  .carousel__next {
+    top: 5%;
+    right: 38%;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .gallery__carousel {
+    .carousel__prev {
+      left: 51%;
+    }
+
+    .carousel__next {
+      right: 43%;
+    }
+  }
+}
+</style>
+
+<style scoped lang='scss'>
+@import 'public/styles.scss';
+
 .gallery {
   width: 100%;
   margin-top: 7rem;
@@ -149,8 +214,8 @@ export default defineComponent({
     justify-content: center;
 
     &__slide {
-      width: 450px;
-      height: 450px;
+      width: 600px;
+      height: 600px;
     }
 
     &__item {
@@ -205,7 +270,7 @@ export default defineComponent({
 
 @media only screen and (min-width: 1200px) {
   .carousel__slide {
-    right: 20rem !important;
+    right: 22rem;
   }
 }
 </style>

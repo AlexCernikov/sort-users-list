@@ -16,9 +16,9 @@ import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionCom
 import SpaceMainComponent from '@/components/HomeViewComponents/SpaceMainComponent.vue';
 import FaqComponent from '@/components/HomeViewComponents/FaqComponent.vue';
 import FacilitiesComponent from '@/components/HomeViewComponents/FacilitiesComponent.vue';
-import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
 import GalleryComponent from '@/components/HomeViewComponents/GalleryComponent.vue';
-import ReviewsComponent from '../components/HomeViewComponents/ReviewsComponent.vue'; //
+import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
+import ReviewsComponent from '../components/HomeViewComponents/ReviewsComponent.vue';
 
 export default defineComponent({
   name: 'app',
