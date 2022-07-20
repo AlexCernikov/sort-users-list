@@ -1,23 +1,24 @@
 <template>
   <div class='home'>
-    <HeroSectionComponent/>
-    <SpaceMainComponent/>
-    <FaqComponent/>
-    <WorkPerksComponent/>
-    <FacilitiesComponent/>
-    <GalleryComponent/>
+    <HeroSectionComponent />
+    <SpaceMainComponent />
+    <FaqComponent />
+    <WorkPerksComponent />
+    <FacilitiesComponent />
+    <GalleryComponent />
+    <ReviewsComponent />
   </div>
 </template>
 
 <script lang='ts'>
-
 import { defineComponent } from 'vue';
 import HeroSectionComponent from '@/components/HomeViewComponents/HeroSectionComponent.vue';
 import SpaceMainComponent from '@/components/HomeViewComponents/SpaceMainComponent.vue';
-import GalleryComponent from '@/components/HomeViewComponents/GalleryComponent.vue';
 import FaqComponent from '@/components/HomeViewComponents/FaqComponent.vue';
 import FacilitiesComponent from '@/components/HomeViewComponents/FacilitiesComponent.vue';
 import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
+import GalleryComponent from '@/components/HomeViewComponents/GalleryComponent.vue';
+import ReviewsComponent from '../components/HomeViewComponents/ReviewsComponent.vue'; //
 
 export default defineComponent({
   name: 'app',
@@ -28,6 +29,7 @@ export default defineComponent({
     FaqComponent,
     WorkPerksComponent,
     FacilitiesComponent,
+    ReviewsComponent,
   },
 });
 </script>

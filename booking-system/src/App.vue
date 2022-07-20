@@ -1,6 +1,6 @@
 <template>
   <header>
-    <NavBarComponent/>
+    <NavBarComponent />
   </header>
   <div id="main">
     <div class="main-content">
@@ -10,7 +10,7 @@
     </div>
   </div>
   <footer class="footer-bar">
-    <FooterComponent/>
+    <FooterComponent />
   </footer>
 </template>
 
@@ -34,7 +34,7 @@ export default defineComponent({
 
 <style lang="scss">
 @use 'sass:math';
-@import "./public/styles";
+@import './public/styles';
 
 #app {
   font-family: 'Roboto Condensed', 'Lato', sans-serif;

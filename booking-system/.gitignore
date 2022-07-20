@@ -24,6 +24,5 @@ pnpm-debug.log*
 
 #VScode configurations
 .prettierrc
-
 .idea\workspace.xml
 
