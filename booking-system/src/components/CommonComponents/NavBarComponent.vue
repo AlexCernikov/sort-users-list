@@ -14,10 +14,17 @@
         </div>
         <div class="nav__guest" :class="toggle ? mobile : ''">
           <div v-for="(navBtn, index) in navButtons" :key="index">
-            <router-link
-                :class="navBtn.path!=='/signUp' ? 'navButton' : 'navButton--sign'"
-                :to="navBtn.path">{{ navBtn.name }}</router-link>
+            <router-link class="navButton" :to="navBtn.path">
+                  {{ navBtn.name }}
+            </router-link>
           </div>
+          <button class='navButton' @click="show = !show">
+            Log In
+            <LogInModal :show="show" @onUserSubmit="handleLogin" @cancel="handleCancel"/>
+          </button>
+          <button class='navButton--sign'>
+            Sign Up
+          </button>
         </div>
       </div>
     </nav>
@@ -25,11 +32,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import LogInModal from '../Modals/LogInModal.vue';
 
 export default defineComponent({
   name: 'NavBarComponent',
+  components: {
+    LogInModal,
+  },
   data() {
     return {
+      show: false,
       toggle: true,
       mobile: 'enable',
       navButtons: [
@@ -57,16 +69,16 @@ export default defineComponent({
           path: '/contactUs',
           name: 'Contact Us',
         },
-        {
-          path: '/logIn',
-          name: 'Log In',
-        },
-        {
-          path: '/signUp',
-          name: 'Sign Up',
-        },
       ],
     };
+  },
+  methods: {
+    handleLogin(data: { username:string; password:string }) {
+      this.show = false;
+    },
+    handleCancel() {
+      this.show = false;
+    },
   },
 });
 </script>
@@ -98,6 +110,8 @@ export default defineComponent({
     line-height: toRem(28);
     padding: 0 10px;
     width: auto;
+    border: none;
+    background-color:#FFFFFF;
     &--sign {
       @extend .navButton;
       white-space: nowrap;
@@ -116,6 +130,7 @@ export default defineComponent({
       background-color: #FF5A00;
   }
   &__logo {
+    align-self: flex-start;
     width: auto;
   }
   .menuBtn {
@@ -131,21 +146,21 @@ export default defineComponent({
 
   @media (max-width: 992px) {
  .nav {
-  display: flex;
-  padding: 0 0.8rem;
-  flex-direction: column;
+  padding: 0 0.6rem;
 
   .navButton {
-    font-size: toRem(15);
+    font-size: toRem(14);
+    padding: 0 5px;
+    &--sign {
+      padding: 12px 20px;
+    }
   }
   &__logo {
     width: auto;
     margin-bottom: 5px;
     align-self: flex-start;
   }
-  &__guest{
-    align-self: flex-end;
-  }
+
   .isd_logo {
     width: 110px;
     height: auto;
@@ -165,11 +180,12 @@ export default defineComponent({
     background-color: #2c3e50;
     color: #FFFFFF;
     padding: 5px 0;
+    width: 100%;
+    margin: 0 auto;
     &--sign {
       @extend .navButton;
       background-color: #231F20;
       padding: 12px 0;
-      margin: 5px 0 0;
     }
   }
   .navButton--sign:hover {
