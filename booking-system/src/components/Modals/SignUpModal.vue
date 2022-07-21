@@ -3,11 +3,11 @@
       <b-modal
         v-model="showModal"
         ref="modal"
-        title="Enter your Log In credentials"
+        title="Create your ISD Account"
         header-bg-variant="light"
         body-bg-variant="light"
         footer-bg-variant="light"
-        ok-title="Log In"
+        ok-title="Sign Up"
         :ok-disabled="handleValidLogIn"
         @show="resetModal"
         @hidden="resetModal"
@@ -20,8 +20,19 @@
           <b-form-input
             id="username-input"
             v-model="enteredUsername"
-            placeholder="enter Username"
+            placeholder="set Username"
             :state="usernameState"
+            required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="Email"
+            label-for="email-input"
+            :state="emailState">
+          <b-form-input
+            id="username-input"
+            v-model="enteredEmail"
+            placeholder="set Email"
+            :state="emailState"
             required></b-form-input>
           </b-form-group>
           <b-form-group
@@ -32,8 +43,20 @@
             id="pass-input"
             type="password"
             v-model="enteredPassword"
-            placeholder="enter Password"
+            placeholder="set Password"
             :state="passwordState"
+            required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="Verify Password"
+            label-for="chkPass-input"
+            :state="chkPasswordState">
+          <b-form-input
+            id="chkPass-input"
+            type="password"
+            v-model="chkEnteredPasword"
+            placeholder="check Password"
+            :state="chkPasswordState"
             required></b-form-input>
           </b-form-group>
         </b-container>
@@ -52,16 +75,22 @@ export default defineComponent({
   data() {
     return {
       passwordFormat: constants.passwordRegex,
+      emailFormat: constants.emailRegex,
       username: '',
       password: '',
+      email: '',
       enteredUsername: '',
       enteredPassword: '',
+      chkEnteredPasword: '',
+      enteredEmail: '',
     };
   },
   methods: {
     resetModal() {
       this.enteredUsername = '';
       this.enteredPassword = '';
+      this.chkEnteredPasword = '';
+      this.enteredEmail = '';
       this.$emit('cancel');
     },
     handleCancel() {
@@ -70,7 +99,8 @@ export default defineComponent({
     handleSubmit() {
       this.username = this.enteredUsername.toLocaleLowerCase();
       this.password = this.enteredPassword;
-      this.$emit('onUserSubmit', { username: this.username, password: this.password });
+      this.email = this.enteredEmail;
+      this.$emit('onUserSubmit', { username: this.username, password: this.password, email: this.email });
     },
   },
   computed: {
@@ -83,8 +113,16 @@ export default defineComponent({
     passwordState() {
       return this.passwordFormat.test(this.enteredPassword);
     },
+    chkPasswordState() {
+      return (this.enteredPassword === this.chkEnteredPasword) && this.chkEnteredPasword.length > 0;
+    },
+    emailState() {
+      return this.emailFormat.test(this.enteredEmail);
+    },
     handleValidLogIn() {
-      return !(this.usernameState && this.passwordState);
+      return !(
+        this.usernameState && this.passwordState && this.emailState && this.chkPasswordState
+      );
     },
   },
 });

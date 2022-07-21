@@ -18,12 +18,19 @@
                   {{ navBtn.name }}
             </router-link>
           </div>
-          <button class='navButton' @click="show = !show">
+          <button class='navButton' @click="showLogIn = !showLogIn">
             Log In
-            <LogInModal :show="show" @onUserSubmit="handleLogin" @cancel="handleCancel"/>
+            <LogInModal
+              :show="showLogIn"
+              @onUserSubmit="handleLogIn"
+              @cancel="handleCloseLogIn"/>
           </button>
-          <button class='navButton--sign'>
+          <button class='navButton--sign' @click="showSignUp = !showSignUp">
             Sign Up
+            <SignUpModal
+              :show="showSignUp"
+              @onUserSubmit="handleSignUp"
+              @cancel="handleCloseSignUp"/>
           </button>
         </div>
       </div>
@@ -33,15 +40,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import LogInModal from '../Modals/LogInModal.vue';
+import SignUpModal from '../Modals/SignUpModal.vue';
 
 export default defineComponent({
   name: 'NavBarComponent',
   components: {
     LogInModal,
+    SignUpModal,
   },
   data() {
     return {
-      show: false,
+      showLogIn: false,
+      showSignUp: false,
       toggle: true,
       mobile: 'enable',
       navButtons: [
@@ -73,11 +83,17 @@ export default defineComponent({
     };
   },
   methods: {
-    handleLogin(data: { username:string; password:string }) {
-      this.show = false;
+    handleLogIn(data: { username:string; password:string }) {
+      this.showLogIn = false;
     },
-    handleCancel() {
-      this.show = false;
+    handleSignUp(data: { username:string; password:string, email:string }) {
+      this.showSignUp = false;
+    },
+    handleCloseLogIn() {
+      this.showLogIn = false;
+    },
+    handleCloseSignUp() {
+      this.showSignUp = false;
     },
   },
 });
