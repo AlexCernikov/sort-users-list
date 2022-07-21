@@ -48,9 +48,13 @@ export default defineComponent({
 $white: #ffffff;
 $aubergine: #231f20;
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   background-color: $aubergine;
   padding: 2.5rem;
+  padding-bottom: 0;
   height: 24.5rem;
   .card__review {
     font-family: $lato;
@@ -64,11 +68,12 @@ $aubergine: #231f20;
   }
   &__author {
     display: flex;
-    margin-bottom: 2%;
+    margin-top: 2%;
     &__identity {
       display: flex;
       flex-direction: column;
       padding: 1rem;
+      text-align: left;
       &--name {
         font-family: $lato;
         font-style: normal;
@@ -87,6 +92,19 @@ $aubergine: #231f20;
         color: $white;
         margin: 0;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .card {
+    min-height: 24.5rem;
+    height: auto;
+    &__review {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical;
     }
   }
 }

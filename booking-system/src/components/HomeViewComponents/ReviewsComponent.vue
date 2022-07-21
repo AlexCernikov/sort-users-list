@@ -9,7 +9,12 @@
         <h2>Why people prefer sharing tables to working from home or private spaces</h2>
       </div>
     </div>
-    <Carousel class="reviews__carousel" :items-to-show="2.8" :wrap-around="true" snapAlign="start">
+    <Carousel
+      class="reviews__carousel"
+      :settings="settings"
+      :breakpoints="breakpoints"
+      :wrap-around="true"
+    >
       <template #addons>
         <Navigation>
           <template #next>
@@ -55,6 +60,21 @@ export default defineComponent({
 
   data() {
     return {
+      settings: {
+        itemsToShow: 1,
+        snapAlign: 'start',
+      },
+      breakpoints: {
+        1369: {
+          itemsToShow: 2.8,
+        },
+        1200: {
+          itemsToShow: 2.3,
+        },
+        992: {
+          itemsToShow: 1.5,
+        },
+      },
       totalVuePackages: null,
       reviewsProps: [
         {
@@ -94,17 +114,93 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@import 'public/styles.scss';
 .arrow__back {
   transform: rotate(180deg);
+}
+.reviews {
+  .carousel__pagination {
+    margin-top: 2rem;
+    padding: 0;
+  }
+  .carousel__pagination-button {
+    margin: 0px;
+    padding: 0px;
+    width: 2rem;
+    height: 0.3rem;
+    border: 0;
+    border-radius: 0;
+    background-color: $gainsboro;
+    transition-duration: 0.5s;
+  }
+
+  .carousel__pagination-button--active {
+    background-color: #dd2c00;
+    transition-duration: 0.5s;
+  }
+  .carousel__prev,
+  .carousel__next {
+    top: -14%;
+    border-radius: 0;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    font-size: calc(100px * 2 / 3);
+  }
+
+  .carousel__prev {
+    left: 70%;
+  }
+
+  .carousel__next {
+    left: 75%;
+  }
+}
+@media screen and (max-width: 966px) {
+  .reviews {
+    .carousel {
+      width: 80%;
+    }
+    .carousel__viewport {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reviews {
+    .carousel__prev,
+    .carousel__next {
+      top: -10%;
+    }
+    .carousel__prev {
+      left: 65%;
+    }
+    .carousel__next {
+      left: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .reviews {
+    .carousel__prev,
+    .carousel__next {
+      top: -10%;
+    }
+    .carousel__prev {
+      left: 50%;
+    }
+    .carousel__next {
+      left: 55%;
+    }
+  }
 }
 </style>
 
 <style scoped lang="scss">
-@import '@/assets/fonts/fonts.scss';
-$reviewBlack: #222831;
-$aubergine: #231f20;
-
+@import 'public/styles.scss';
 .reviews {
   padding-left: 1rem;
   display: flex;
@@ -129,7 +225,7 @@ $aubergine: #231f20;
         align-items: center;
         p {
           font-family: $lato;
-          color: $reviewBlack;
+          color: $bunker;
           font-style: normal;
           font-weight: 500;
           font-size: 1.2rem;
@@ -139,7 +235,7 @@ $aubergine: #231f20;
         hr {
           width: 4.5rem;
           height: 0.1rem;
-          background-color: $reviewBlack;
+          background-color: $bunker;
           margin: 0 0 0 1rem;
         }
       }
@@ -154,17 +250,31 @@ $aubergine: #231f20;
       }
     }
   }
-  // For tablet landscape and laptop
-  @media screen and (max-width: 1366px) {
-    .reviews__head {
-      width: 80%;
-    }
-    .reviews__head__text {
-      width: 50%;
-    }
+}
+
+@media screen and (max-width: 1366px) {
+  .reviews__head {
+    width: 80%;
   }
-  //For tablet portrait and phone
-  @media screen and (max-width: 768px) {
+  .reviews__head__text {
+    width: 50%;
+  }
+  .reviews__carousel {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 966px) {
+  .reviews__carousel {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reviews {
     .reviews__head {
       width: 80%;
       margin-bottom: 4rem;
