@@ -5,12 +5,12 @@ export function isAxiosError(value: any): value is AxiosError {
   return typeof value?.response === 'object';
 }
 
-export abstract class AbstractApiService {
+export abstract class ApiService {
   protected readonly http: AxiosInstance;
 
   protected constructor(
     protected readonly path?: string,
-    protected readonly baseURL: string = '/',
+    protected readonly baseURL: string = 'http://135.181.104.18:8081/',
   ) {
     if (path) {
       this.baseURL += path;

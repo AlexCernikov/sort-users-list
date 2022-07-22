@@ -6,3 +6,10 @@ export interface UserModel {
   enabled: boolean;
   role: string;
 }
+
+export interface UserCreateModel {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}

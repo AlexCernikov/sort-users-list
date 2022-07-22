@@ -1,13 +1,13 @@
-import { EntitiesModel } from '@/models/entities-model';
-import { UserModel } from '@/models/user-model';
+import { EntityModel } from '@/models/entity.model';
+import { UserModel } from '@/models/user.model';
 
-export interface ReservationModel extends EntitiesModel {
+export interface ReservationModel extends EntityModel {
   content: [{
     id: number;
     fromDate: Date;
     toDate: Date;
     price: number;
-    reservationEntity: EntitiesModel;
+    reservationEntity: EntityModel;
     user: UserModel;
     comment: string;
   }];
