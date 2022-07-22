@@ -1,7 +1,7 @@
 import { EntityModel } from '@/models/entity.model';
 import { UserModel } from '@/models/user.model';
 
-export interface ReservationModel extends EntityModel {
+export interface ReservationModel {
   content: [{
     id: number;
     fromDate: Date;
