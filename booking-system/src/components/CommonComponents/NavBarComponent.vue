@@ -39,6 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import axios from 'axios';
 import LogInModal from '../Modals/LogInModal.vue';
 import SignUpModal from '../Modals/SignUpModal.vue';
 
@@ -52,6 +53,14 @@ export default defineComponent({
     return {
       showLogIn: false,
       showSignUp: false,
+      logInEmail: '',
+      logInPassword: '',
+      registerEmail: '',
+      registerFn: '',
+      registerLn: '',
+      registerPassword: '',
+      token: '',
+      newUser: {},
       toggle: true,
       mobile: 'enable',
       navButtons: [
@@ -65,15 +74,7 @@ export default defineComponent({
         },
         {
           path: '/spaceOptions',
-          name: 'Space Options',
-        },
-        {
-          path: '/benefits',
-          name: 'Benefits',
-        },
-        {
-          path: 'reviews',
-          name: 'Reviews',
+          name: 'My Bookings',
         },
         {
           path: '/contactUs',
@@ -83,10 +84,42 @@ export default defineComponent({
     };
   },
   methods: {
-    handleLogIn(data: { username:string; password:string }) {
+    handleLogIn(data: { email:string; password:string }) {
+      this.logInEmail = data.email;
+      this.logInPassword = data.password;
+      axios({
+        method: 'POST',
+        url: 'http://135.181.104.18:8081/user/authenticate',
+        data: {
+          email: this.logInEmail,
+          password: this.logInPassword,
+        },
+      })
+        .then((response) => {
+          this.token = response.data.token;
+        });
       this.showLogIn = false;
     },
-    handleSignUp(data: { username:string; password:string, email:string }) {
+    handleSignUp(data: { email:string, password:string, firstName:string; lastName:string }) {
+      this.registerEmail = data.email;
+      this.registerFn = data.firstName;
+      this.registerLn = data.lastName;
+      this.registerPassword = data.password;
+      console.log(data);
+      axios({
+        method: 'POST',
+        url: 'http://135.181.104.18:8081/create',
+        data: {
+          email: this.registerEmail,
+          password: this.registerPassword,
+          firstname: this.registerFn,
+          lastname: this.registerLn,
+        },
+      })
+        .then((response) => {
+          this.newUser = response;
+          console.log(response);
+        });
       this.showSignUp = false;
     },
     handleCloseLogIn() {
@@ -139,7 +172,7 @@ export default defineComponent({
     }
   }
   .navButton:hover {
-      border-bottom: 2px solid #2c3e50;
+      border-bottom: 2px solid #FF5A00;
     }
   .navButton--sign:hover {
     transition-duration: 0.5s;

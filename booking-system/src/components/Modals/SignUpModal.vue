@@ -14,25 +14,36 @@
         @ok="handleSubmit">
         <b-container>
           <b-form-group
-            label="Userame"
-            label-for="username-input"
-            :state="usernameState">
-          <b-form-input
-            id="username-input"
-            v-model="enteredUsername"
-            placeholder="set Username"
-            :state="usernameState"
-            required></b-form-input>
-          </b-form-group>
-          <b-form-group
             label="Email"
             label-for="email-input"
             :state="emailState">
           <b-form-input
-            id="username-input"
+            id="email-input"
             v-model="enteredEmail"
             placeholder="set Email"
             :state="emailState"
+            required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="First Name"
+            label-for="firstName-input"
+            :state="firstNameState">
+          <b-form-input
+            id="firstName-input"
+            v-model="enteredFirstName"
+            placeholder="set First Name"
+            :state="firstNameState"
+            required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="Last Name"
+            label-for="lastName-input"
+            :state="lastNameState">
+          <b-form-input
+            id="lastName-input"
+            v-model="enteredLastName"
+            placeholder="set Last Name"
+            :state="lastNameState"
             required></b-form-input>
           </b-form-group>
           <b-form-group
@@ -76,10 +87,12 @@ export default defineComponent({
     return {
       passwordFormat: constants.passwordRegex,
       emailFormat: constants.emailRegex,
-      username: '',
+      firstName: '',
+      lastName: '',
       password: '',
       email: '',
-      enteredUsername: '',
+      enteredFirstName: '',
+      enteredLastName: '',
       enteredPassword: '',
       chkEnteredPasword: '',
       enteredEmail: '',
@@ -87,7 +100,8 @@ export default defineComponent({
   },
   methods: {
     resetModal() {
-      this.enteredUsername = '';
+      this.enteredFirstName = '';
+      this.enteredLastName = '';
       this.enteredPassword = '';
       this.chkEnteredPasword = '';
       this.enteredEmail = '';
@@ -97,18 +111,27 @@ export default defineComponent({
       this.$emit('cancel');
     },
     handleSubmit() {
-      this.username = this.enteredUsername.toLocaleLowerCase();
+      this.firstName = this.enteredFirstName;
+      this.lastName = this.enteredLastName;
       this.password = this.enteredPassword;
-      this.email = this.enteredEmail;
-      this.$emit('onUserSubmit', { username: this.username, password: this.password, email: this.email });
+      this.email = this.enteredEmail.toLocaleLowerCase();
+      this.$emit('onUserSubmit', {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        password: this.password,
+        email: this.email,
+      });
     },
   },
   computed: {
     showModal() {
       return this.show;
     },
-    usernameState() {
-      return this.enteredUsername.length > 7;
+    firstNameState() {
+      return this.enteredFirstName.length > 1;
+    },
+    lastNameState() {
+      return this.enteredLastName.length > 1;
     },
     passwordState() {
       return this.passwordFormat.test(this.enteredPassword);
@@ -121,7 +144,8 @@ export default defineComponent({
     },
     handleValidLogIn() {
       return !(
-        this.usernameState && this.passwordState && this.emailState && this.chkPasswordState
+        this.firstNameState && this.passwordState && this.emailState
+        && this.chkPasswordState && this.lastNameState
       );
     },
   },

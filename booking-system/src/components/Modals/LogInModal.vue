@@ -14,14 +14,14 @@
         @ok="handleSubmit">
         <b-container>
           <b-form-group
-            label="Userame"
-            label-for="username-input"
-            :state="usernameState">
+            label="Email"
+            label-for="email-input"
+            :state="emailState">
           <b-form-input
-            id="username-input"
-            v-model="enteredUsername"
-            placeholder="enter Username"
-            :state="usernameState"
+            id="email-input"
+            v-model="enteredEmail"
+            placeholder="enter Email"
+            :state="emailState"
             required></b-form-input>
           </b-form-group>
           <b-form-group
@@ -52,15 +52,16 @@ export default defineComponent({
   data() {
     return {
       passwordFormat: constants.passwordRegex,
-      username: '',
+      emailFormat: constants.emailRegex,
+      email: '',
       password: '',
-      enteredUsername: '',
+      enteredEmail: '',
       enteredPassword: '',
     };
   },
   methods: {
     resetModal() {
-      this.enteredUsername = '';
+      this.enteredEmail = '';
       this.enteredPassword = '';
       this.$emit('cancel');
     },
@@ -68,23 +69,24 @@ export default defineComponent({
       this.$emit('cancel');
     },
     handleSubmit() {
-      this.username = this.enteredUsername.toLocaleLowerCase();
+      this.email = this.enteredEmail.toLocaleLowerCase();
       this.password = this.enteredPassword;
-      this.$emit('onUserSubmit', { username: this.username, password: this.password });
+      this.$emit('onUserSubmit', { email: this.email, password: this.password });
     },
   },
   computed: {
     showModal() {
       return this.show;
     },
-    usernameState() {
-      return this.enteredUsername.length > 7;
+    emailState() {
+      return this.emailFormat.test(this.enteredEmail);
     },
     passwordState() {
-      return this.passwordFormat.test(this.enteredPassword);
+      // return this.passwordFormat.test(this.enteredPassword);
+      return true;
     },
     handleValidLogIn() {
-      return !(this.usernameState && this.passwordState);
+      return !(this.emailState && this.passwordState);
     },
   },
 });
