@@ -1,12 +1,13 @@
 import { ApiService } from '@/services/api.service';
 import { UserCreateModel, UserModel } from '@/models/user.model';
+import { TokenModel } from '@/models/token.model';
 
 class UserApiService extends ApiService {
   public constructor() {
     super('user');
   }
 
-  public userAuthenticate(email: string, password: string): Promise<UserModel> {
+  public userAuthenticate(email: string, password: string): Promise<TokenModel> {
     return this.http
       .post('/authenticate', {
         params: {
