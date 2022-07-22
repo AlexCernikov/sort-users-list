@@ -1,21 +1,23 @@
 <template>
-  <header>
-    <NavBarComponent />
-  </header>
-  <div id="main">
-    <div class="main-content">
-      <router-view/>
-      <MapComponent />
-      <BecomeMemberComponent />
+  <section class="home__page">
+    <header v-if="showSections()">
+      <NavBarComponent />
+    </header>
+    <div id="main">
+      <div class="main-content">
+        <router-view :isAdmin="isAdmin" />
+        <MapComponent v-if="showSections()" />
+        <BecomeMemberComponent v-if="showSections()" />
+      </div>
     </div>
-  </div>
-  <footer class="footer-bar">
-    <FooterComponent />
-  </footer>
+    <footer v-if="showSections()" class="footer-bar">
+      <FooterComponent />
+    </footer>
+  </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, watch } from 'vue';
 import FooterComponent from '@/components/CommonComponents/FooterComponent.vue';
 import MapComponent from '@/components/CommonComponents/MapComponent.vue';
 import BecomeMemberComponent from '@/components/CommonComponents/BecomeMemberComponent.vue';
@@ -28,6 +30,32 @@ export default defineComponent({
     MapComponent,
     BecomeMemberComponent,
     FooterComponent,
+  },
+  watch: {
+    $route(to, from) {
+      if (
+        to.fullPath.includes('/admin')
+        || to.fullPath.includes('/users')
+        || to.fullPath.includes('/reservations')
+        || to.fullPath.includes('/entities')
+        || to.fullPath.includes('/settings')
+      ) {
+        this.isAdminRoute = true;
+      } else {
+        this.isAdminRoute = false;
+      }
+    },
+  },
+  data() {
+    return {
+      isAdmin: true,
+      isAdminRoute: false,
+    };
+  },
+  methods: {
+    showSections() {
+      return !(this.isAdmin && this.isAdminRoute);
+    },
   },
 });
 </script>

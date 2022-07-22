@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import AdminView from '../views/AdminView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,6 +22,29 @@ const routes: Array<RouteRecordRaw> = [
     path: '/ourSpacesView',
     name: 'ourSpacesView',
     component: () => import('../views/OurSpacesView.vue'),
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView,
+    children: [
+      {
+        path: '/users',
+        component: () => import('../views/UsersView.vue')
+      },
+      {
+        path: '/reservations',
+        component: () => import('../views/ReservationsView.vue')
+      },
+      {
+        path: '/entities',
+        component: () => import('../views/EntitiesView.vue')
+      },
+      {
+        path: '/settings',
+        component: () => import('../views/SettingsView.vue')
+      },
+    ]
   },
 ];
 
