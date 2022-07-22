@@ -17,10 +17,10 @@ export abstract class ApiService {
     }
     this.http = axios.create({
       baseURL,
-      // ... further stuff, e.g. `withCredentials: true`
     });
     this.http.defaults.headers.common.Accept = 'application/json;charset=UTF-8';
     this.http.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
+    this.http.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('token')}`;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -59,14 +59,11 @@ export abstract class ApiService {
           console.log(error.response.headers);
           throw error;
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser
           // eslint-disable-next-line no-console
           console.log(error.request);
           throw new Error(error as any);
         }
       } else {
-        // Something happened in setting up the request that triggered an Error
         // eslint-disable-next-line no-console
         console.log('Error', error.message);
         throw new Error(error.message);
