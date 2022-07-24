@@ -14,22 +14,22 @@
         <span class="material-icons">home</span>
         <span class="text">Dashboard</span>
       </router-link>
-      <router-link class="button" to="/users">
+      <router-link class="button" to="/admin/users">
         <span class="material-icons">group</span>
         <span class="text">Users</span>
       </router-link>
-      <router-link class="button" to="/reservations">
+      <router-link class="button" to="/admin/reservations">
         <span class="material-icons">calendar_month</span>
         <span class="text">Reservations</span>
       </router-link>
-      <router-link class="button" to="/entities">
+      <router-link class="button" to="/admin/entities">
         <span class="material-icons">workspaces</span>
         <span class="text">Entities</span>
       </router-link>
     </div>
     <div class="flex"></div>
     <div class="menu">
-      <router-link class="button" to="/settings">
+      <router-link class="button" to="/admin/settings">
         <span class="material-icons">settings</span>
         <span class="text">Settings</span>
       </router-link>
@@ -134,7 +134,7 @@ aside {
         transition: 0.2s ease-out;
         font-size: 1rem;
       }
-      
+
       &:hover,
       &.router-link-exact-active {
         background-color: $aubergine;

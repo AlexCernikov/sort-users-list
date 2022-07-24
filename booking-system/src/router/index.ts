@@ -29,22 +29,22 @@ const routes: Array<RouteRecordRaw> = [
     component: AdminView,
     children: [
       {
-        path: '/users',
-        component: () => import('../views/UsersView.vue')
+        path: '/admin/users',
+        component: () => import('../views/UsersView.vue'),
       },
       {
-        path: '/reservations',
-        component: () => import('../views/ReservationsView.vue')
+        path: '/admin/reservations',
+        component: () => import('../views/ReservationsView.vue'),
       },
       {
-        path: '/entities',
-        component: () => import('../views/EntitiesView.vue')
+        path: '/admin/entities',
+        component: () => import('../views/EntitiesView.vue'),
       },
       {
-        path: '/settings',
-        component: () => import('../views/SettingsView.vue')
+        path: '/admin/settings',
+        component: () => import('../views/SettingsView.vue'),
       },
-    ]
+    ],
   },
 ];
 
