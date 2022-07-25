@@ -1,7 +1,9 @@
 <template>
   <div v-if="isAdmin" class="admin">
     <DashboardComponent />
-    <router-view />
+    <div class="admin__components">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -26,18 +28,16 @@ export default defineComponent({
   padding: 0;
   box-sizing: border-box;
 }
-.main {
+.admin__components {
   display: flex;
   padding: 2rem;
+  width: calc(100% - 4rem);
 }
 .admin {
   display: flex;
-  .main {
+  .admin__components {
     flex: 1 1 0;
     padding: 2rem;
-    @media (max-width: 768pxpx) {
-      padding-left: 6rem;
-    }
   }
 }
 </style>
