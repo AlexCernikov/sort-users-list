@@ -1,8 +1,8 @@
 export interface UserModel {
   id: number;
   email: string;
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   enabled: boolean;
   role: string;
 }
@@ -10,6 +10,6 @@ export interface UserModel {
 export interface UserCreateModel {
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
 }
