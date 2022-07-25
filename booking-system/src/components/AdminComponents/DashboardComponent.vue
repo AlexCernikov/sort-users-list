@@ -43,12 +43,22 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   data() {
     return {
+      window_width: document.documentElement.clientWidth,
       is_expanded: ref(true),
     };
+  },
+  mounted() {
+    this.ShrinkSidebar();
+    window.addEventListener('resize', this.ShrinkSidebar);
   },
   methods: {
     ToggleMenu() {
       this.is_expanded = !this.is_expanded;
+    },
+    ShrinkSidebar() {
+      if (document.documentElement.clientWidth <= 414 && this.is_expanded) {
+        this.is_expanded = false;
+      }
     },
   },
 });
@@ -159,9 +169,10 @@ aside {
     }
   }
 
-  @media screen and (max-width: 768px) {
-    position: fixed;
-    z-index: 99;
+  @media screen and (max-width: 414px) {
+    .menu-toggle-wrap {
+      display: none;
+    }
   }
 }
 </style>
