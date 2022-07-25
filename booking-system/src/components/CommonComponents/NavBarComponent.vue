@@ -95,8 +95,20 @@ export default defineComponent({
           password: this.logInPassword,
         },
       })
-        .then((response) => {
-          this.token = response.data.token;
+        .then((tokenResponse) => {
+          this.token = tokenResponse.data.token;
+          localStorage.setItem('Bearer', this.token);
+          axios({
+            method: 'GET',
+            url: 'http://135.181.104.18:8081/user/current',
+            headers: {
+              Authorization: `Bearer ${this.token}`,
+              'Content-Type': 'application/json',
+            },
+          })
+            .then((response) => {
+              localStorage.setItem('Role', response.data.role);
+            });
         });
       this.showLogIn = false;
     },
@@ -105,10 +117,9 @@ export default defineComponent({
       this.registerFn = data.firstName;
       this.registerLn = data.lastName;
       this.registerPassword = data.password;
-      console.log(data);
       axios({
         method: 'POST',
-        url: 'http://135.181.104.18:8081/create',
+        url: 'http://135.181.104.18:8081/user/create',
         data: {
           email: this.registerEmail,
           password: this.registerPassword,
@@ -118,7 +129,6 @@ export default defineComponent({
       })
         .then((response) => {
           this.newUser = response;
-          console.log(response);
         });
       this.showSignUp = false;
     },

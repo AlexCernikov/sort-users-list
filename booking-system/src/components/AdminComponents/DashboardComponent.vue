@@ -144,7 +144,6 @@ aside {
         transition: 0.2s ease-out;
         font-size: 1rem;
       }
-
       &:hover,
       &.router-link-exact-active {
         background-color: $aubergine;

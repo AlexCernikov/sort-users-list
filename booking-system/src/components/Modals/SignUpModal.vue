@@ -85,12 +85,6 @@ export default defineComponent({
   },
   data() {
     return {
-      passwordFormat: constants.passwordRegex,
-      emailFormat: constants.emailRegex,
-      firstName: '',
-      lastName: '',
-      password: '',
-      email: '',
       enteredFirstName: '',
       enteredLastName: '',
       enteredPassword: '',
@@ -111,15 +105,12 @@ export default defineComponent({
       this.$emit('cancel');
     },
     handleSubmit() {
-      this.firstName = this.enteredFirstName;
-      this.lastName = this.enteredLastName;
-      this.password = this.enteredPassword;
-      this.email = this.enteredEmail.toLocaleLowerCase();
+      this.enteredEmail = this.enteredEmail.toLocaleLowerCase();
       this.$emit('onUserSubmit', {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        password: this.password,
-        email: this.email,
+        firstName: this.enteredFirstName,
+        lastName: this.enteredLastName,
+        password: this.enteredPassword,
+        email: this.enteredEmail,
       });
     },
   },
@@ -134,13 +125,13 @@ export default defineComponent({
       return this.enteredLastName.length > 1;
     },
     passwordState() {
-      return this.passwordFormat.test(this.enteredPassword);
+      return constants.passwordRegex.test(this.enteredPassword);
     },
     chkPasswordState() {
       return (this.enteredPassword === this.chkEnteredPasword) && this.chkEnteredPasword.length > 0;
     },
     emailState() {
-      return this.emailFormat.test(this.enteredEmail);
+      return constants.emailRegex.test(this.enteredEmail);
     },
     handleValidLogIn() {
       return !(
