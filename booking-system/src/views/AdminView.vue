@@ -36,7 +36,7 @@ export default defineComponent({
 .admin {
   display: flex;
   .admin__components {
-    flex: 1 1 0;
+    flex-direction: column;
     padding: 2rem;
   }
 }
