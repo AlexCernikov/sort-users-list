@@ -2,6 +2,8 @@
   <div class="calendar">
     <Datepicker
       v-model="date"
+      @update:modelValue="handleUpdate"
+      autoApply
       range
       :minDate="new Date()"
       :enableTimePicker="false"
@@ -23,14 +25,19 @@ export default defineComponent({
   data() {
     return {
       date: [],
+      dateFrom: '',
+      dateTo: '',
       disabled: ['2022-07-29T10:07:27.271+00:00', '2022-07-30T10:07:27.271+00:00'],
     };
   },
   create() {
     const date = ref(new Date());
-    const startDate = new Date();
-    const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
-    this.date = [startDate, endDate];
+  },
+  methods: {
+    handleUpdate() {
+      [this.dateFrom, this.dateTo] = this.date;
+      console.log(this.dateFrom);
+    },
   },
 });
 </script>
