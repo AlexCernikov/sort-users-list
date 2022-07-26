@@ -1,42 +1,6 @@
 <template>
   <section>
     <h1>Reservation List</h1>
-        <form @submit.prevent='reservations' class='add'>
-          <div class='row'>
-            <div class='col'>
-              <label for='entity-name'>
-                <input type='text'
-                       class='form-control'
-                       id='entity-name'
-                       name='name'
-                       placeholder='Enter entity name'
-                       v-model='reservations.content.reservationEntity.name' />
-              </label>
-            </div>
-            <div class='col'>
-              <label for='user'>
-                <input type='text'
-                       class='form-control'
-                       id='user'
-                       name='name'
-                       placeholder='Enter user name'
-                       v-model='reservations.content.user.firstname'>
-              </label>
-            </div>
-          </div>
-          <div class='row'>
-            <div class='col'>
-              <label for='user'>
-                <input type='text'
-                       class='form-control'
-                       id='user'
-                       name='name'
-                       placeholder='Enter price'
-                       v-model='reservations.content.price'>
-              </label>
-            </div>
-          </div>
-        </form>
     <div class='table-responsive'>
       <table class='table'>
         <thead class='thead-light'>
