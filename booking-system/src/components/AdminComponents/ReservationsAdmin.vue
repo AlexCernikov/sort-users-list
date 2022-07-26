@@ -14,22 +14,22 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for='reservation in reservations.content' :key='reservation.id'>
+        <tr v-for='reservation in reservations' :key='reservation.id'>
           <th scope='row'></th>
           <td>{{ reservation.reservationEntity?.name }}</td>
           <td>{{ `${reservation.user.firstname} ${reservation.user.lastname}` }}</td>
           <td>{{ dateTime(reservation.fromDate) }}</td>
           <td>{{ dateTime(reservation.toDate) }}</td>
           <td>
-            <div class='reservation__btns'>
-              <button type='button'>
+            <div>
+              <button type='button' class='reservation__btns'>
                 <span class='material-icons'>info</span>
               </button>
-              <button type='button'>
+              <button type='button' class='reservation__btns'>
                 <span class='material-icons' @click='editRes(reservation.id)'
                       @keyup='editRes(reservation.id)'>edit</span>
               </button>
-              <button type='button'>
+              <button type='button' class='reservation__btns'>
                 <span class='material-icons' @click='deleteRes(reservation.id)'
                       @keyup='deleteRes(reservation.id)'>delete</span>
               </button>
@@ -51,19 +51,17 @@ export default defineComponent({
   data() {
     return {
       reservations: [{
-        content: {
-          fromDate: null,
-          toDate: null,
-          price: 0,
-          reservationEntity: {
-            name: '',
-          },
-          user: {
-            firstname: '',
-            lastname: '',
-          },
-          comment: '',
+        fromDate: null,
+        toDate: null,
+        price: 0,
+        reservationEntity: {
+          name: '',
         },
+        user: {
+          firstname: '',
+          lastname: '',
+        },
+        comment: '',
       }],
       token: '',
     };
@@ -127,7 +125,7 @@ section {
   &__btns {
     background-color: transparent;
     background-repeat: no-repeat;
-    border-radius: 0;
+    border: 0;
   }
 }
 </style>
