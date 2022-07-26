@@ -73,7 +73,7 @@ export default defineComponent({
           name: 'Book a Space',
         },
         {
-          path: '/spaceOptions',
+          path: '/myBookings',
           name: 'My Bookings',
         },
         {
