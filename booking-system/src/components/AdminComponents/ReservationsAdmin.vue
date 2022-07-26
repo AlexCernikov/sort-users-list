@@ -21,15 +21,15 @@
           <td>{{ dateTime(reservation.fromDate) }}</td>
           <td>{{ dateTime(reservation.toDate) }}</td>
           <td>
-            <div>
-              <button type='button' class='reservation__btns'>
+            <div class='reservation__btns'>
+              <button type='button'>
                 <span class='material-icons'>info</span>
               </button>
-              <button type='button' class='reservation__btns'>
+              <button type='button'>
                 <span class='material-icons' @click='editRes(reservation.id)'
                       @keyup='editRes(reservation.id)'>edit</span>
               </button>
-              <button type='button' class='reservation__btns'>
+              <button type='button'>
                 <span class='material-icons' @click='deleteRes(reservation.id)'
                       @keyup='deleteRes(reservation.id)'>delete</span>
               </button>
@@ -123,9 +123,11 @@ section {
 
 .reservation {
   &__btns {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: 0;
+    button {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      border: 0;
+    }
   }
 }
 </style>
