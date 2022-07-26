@@ -4,7 +4,6 @@
       <button class='add-entry-button'
       :class="[ !showAddEntry ? '' : 'red' ]" @click="changeShowAddEntry">
         {{ showAddEntry ? 'Close' : 'Add Entry' }}</button>
-
       <div class="form-container">
         <form v-if="this.showAddEntry" @submit.prevent="addEntry">
           <label for="name">
@@ -59,10 +58,8 @@
             <span class="material-icons" @click="editId(entity.id)" @keyup="editID(entity.id)">
               edit
             </span>
-
         </div>
       </div>
-
       <div class='item-form' v-if="this.shown === entity.id ? true : false">
         <div class="form-container">
           <form @submit.prevent="updateId(entity.id)">
@@ -93,15 +90,15 @@
           </form>
         </div>
       </div>
-
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import axios from 'axios';
 
-export default {
+export default defineComponent({
   name: 'EntitiesAdmin',
   data() {
     return {
@@ -134,7 +131,6 @@ export default {
         if (response.data.token) {
           this.token = response.data.token;
           localStorage.setItem('token', this.token);
-          console.log(this.token);
         }
       });
     axios.get('http://135.181.104.18:8081/reservationEntities', {
@@ -145,7 +141,6 @@ export default {
       .then((response) => {
         if (response.data) {
           this.Entities = response.data;
-          console.log(this.Entities);
         }
       });
   },
@@ -162,9 +157,7 @@ export default {
           }
         });
     },
-    // deleteId(id) {
-    //
-    // },
+
     deleteId(id) {
       if (window.confirm(`Are you sure you want to delete entry with ID: ${id}`)) {
         axios.delete(`http://135.181.104.18:8081/reservationEntities/delete/${id}`, {
@@ -195,10 +188,9 @@ export default {
 
     updateId(id) {
       if (window.confirm(`Are you sure you want to update entry with ID: ${id}`)) {
-        axios({
-          method: 'PUT',
-          url: 'http://135.181.104.18:8081/reservationEntities/update',
-          data: {
+        axios.put(
+          'http://135.181.104.18:8081/reservationEntities/update',
+          {
             id,
             name: this.updateObject.name,
             description: this.updateObject.description,
@@ -206,11 +198,12 @@ export default {
             type: this.updateObject.type,
             enabled: this.updateObject.enabled,
           },
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
           },
-        })
+        )
           .then((response) => {
             this.render();
             this.clearUpdateObject();
@@ -221,7 +214,7 @@ export default {
       if (this.showAddEntry === true) {
         this.newObject.name = '';
         this.newObject.description = '';
-        this.newObject.jsonOptions = {};
+        this.newObject.jsonOptions = '{}';
         this.newObject.type = '';
         this.newObject.enabled = '';
       }
@@ -230,37 +223,36 @@ export default {
     addEntry() {
       if (this.newObject.name && this.newObject.description
       && this.newObject.type && (this.newObject.enabled !== undefined)) {
-        axios({
-          method: 'POST',
-          url: 'http://135.181.104.18:8081/reservationEntities/create',
-          data: {
+        axios.post(
+          'http://135.181.104.18:8081/reservationEntities/create',
+          {
             name: this.newObject.name,
             description: this.newObject.description,
             jsonOptions: this.newObject.jsonOptions,
             type: this.newObject.type,
             enabled: this.newObject.enabled,
           },
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
           },
-        })
+        )
           .then((response) => {
-            this.newUser = response;
-            console.log(response);
             this.render();
             this.newObject.name = '';
             this.newObject.description = '';
-            this.newObject.jsonOptions = {};
+            this.newObject.jsonOptions = '{}';
             this.newObject.type = '';
             this.newObject.enabled = '';
           });
       }
     },
   },
-};
+});
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .table-head {
   display: grid;
   grid-template-columns: 1fr 4fr 2fr 3fr 1fr 1fr;
@@ -272,10 +264,6 @@ export default {
   align-items: center;
   padding-bottom: 5px;
   border-bottom: 2px solid black;
-}
-
-.list {
-
 }
 
 .list-item {
