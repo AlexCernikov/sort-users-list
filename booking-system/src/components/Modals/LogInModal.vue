@@ -53,8 +53,6 @@ export default defineComponent({
     return {
       passwordFormat: constants.passwordRegex,
       emailFormat: constants.emailRegex,
-      email: '',
-      password: '',
       enteredEmail: '',
       enteredPassword: '',
     };
@@ -69,9 +67,8 @@ export default defineComponent({
       this.$emit('cancel');
     },
     handleSubmit() {
-      this.email = this.enteredEmail.toLocaleLowerCase();
-      this.password = this.enteredPassword;
-      this.$emit('onUserSubmit', { email: this.email, password: this.password });
+      this.enteredEmail = this.enteredEmail.toLocaleLowerCase();
+      this.$emit('onUserSubmit', { email: this.enteredEmail, password: this.enteredPassword });
     },
   },
   computed: {
@@ -83,7 +80,7 @@ export default defineComponent({
     },
     passwordState() {
       // return this.passwordFormat.test(this.enteredPassword);
-      return true;
+      return this.enteredPassword.length > 3;
     },
     handleValidLogIn() {
       return !(this.emailState && this.passwordState);
