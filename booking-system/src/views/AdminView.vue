@@ -1,6 +1,6 @@
 <template>
   <div v-if="isAdmin" class="admin">
-    <DashboardComponent />
+    <SidebarComponent />
     <div class="admin__components">
       <router-view />
     </div>
@@ -9,10 +9,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import DashboardComponent from '@/components/AdminComponents/DashboardComponent.vue';
+import SidebarComponent from '@/components/AdminComponents/SidebarComponent.vue';
 
 export default defineComponent({
-  components: { DashboardComponent },
+  components: { SidebarComponent },
   props: {
     isAdmin: {
       type: Boolean,
@@ -30,8 +30,9 @@ export default defineComponent({
 }
 .admin__components {
   display: flex;
+  flex-direction: column;
   padding: 2rem;
-  width: calc(100% - 4rem);
+  width: calc(100% - 12rem);
 }
 .admin {
   display: flex;
