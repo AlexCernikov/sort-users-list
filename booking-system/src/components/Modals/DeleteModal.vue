@@ -1,33 +1,45 @@
 <template>
+    <div>
       <b-modal
-        id="delete-modal"
+        v-model="showModal"
+        ref="modal"
+        title="Delete"
         header-bg-variant="light"
         body-bg-variant="light"
         footer-bg-variant="light"
-        v-model="showModal"
-        @hidden="resetModal"
-        @cancel="resetModal"
+        ok-title="Delete User"
         @show="resetModal"
-        @ok = "handleDelete"
-        ok-title = "Delete"
-        centered>
-        <p class="my-4">"Are you sure you want to delete?"</p>
+        @hidden="resetModal"
+        @ok="handleDelete">
+        <b-container>
+          <p>Are you sure?</p>
+        </b-container>
       </b-modal>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { constants } from '../../../public/_globalConsts';
 
 export default defineComponent({
   props: {
     show: Boolean,
   },
+  data() {
+    return {
+      id: '',
+    };
+  },
   methods: {
     resetModal() {
       this.$emit('cancel');
     },
+    handleCancel() {
+      this.$emit('cancel');
+    },
     handleDelete() {
-      this.$emit('onUserSubmit', { onDelete: true });
+      this.$emit('onUserDelete', this.id);
     },
   },
   computed: {
@@ -43,26 +55,25 @@ export default defineComponent({
 
 <style lang="scss">
 @import '@/../public/styles.scss';
-
-  .btn-primary {
-    background-color: $orange;
-    border: hidden;
-    border-radius: 0;
-  }
-  .btn-secondary {
-    border: hidden;
-    border-radius: 0;
-  }
-  .btn-primary:hover {
-    background-color: $orange;
-    box-shadow: 4px 4px 8px #888888;
-  }
-  .btn-secondary:hover {
-    box-shadow: 4px 4px 8px #888888;
-  }
-  .btn-primary:disabled, .btn-primary.disabled {
-    background-color: #FF5A00;
-  }
+        .btn-primary {
+            background-color: $orange;
+            border: hidden;
+            border-radius: 0;
+        }
+        .btn-secondary {
+            border: hidden;
+            border-radius: 0;
+        }
+        .btn-primary:hover {
+            background-color: $orange;
+            box-shadow: 4px 4px 8px #888888;
+        }
+        .btn-secondary:hover {
+            box-shadow: 4px 4px 8px #888888;
+        }
+        .btn-primary:disabled, .btn-primary.disabled {
+            background-color: #FF5A00;
+        }
   p.my-4 {
     font-size: 1.5rem;
     text-align: center;
