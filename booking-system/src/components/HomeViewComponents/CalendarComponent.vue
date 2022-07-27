@@ -36,7 +36,7 @@ export default defineComponent({
   methods: {
     handleUpdate() {
       [this.dateFrom, this.dateTo] = this.date;
-      console.log(this.dateFrom);
+      this.$emit('date-picked',this.date)
     },
   },
 });
