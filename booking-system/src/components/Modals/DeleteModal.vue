@@ -1,33 +1,26 @@
 <template>
-    <div>
       <b-modal
-        v-model="showModal"
-        ref="modal"
-        title="Delete"
+        id="delete-modal"
         header-bg-variant="light"
         body-bg-variant="light"
         footer-bg-variant="light"
-        ok-title="Delete User"
+        v-model="showModal"
+        @hidden="resetModal"
+        @cancel="resetModal"
         @show="resetModal"
         ok-title = "Delete"
         centered>
-        <p class="my-4">"Are you sure you want to delete?"</p>
+        <p class="my-4">Are you sure you want to delete?</p>
       </b-modal>
-    </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { constants } from '../../../public/_globalConsts';
 
 export default defineComponent({
   props: {
     show: Boolean,
-  },
-  data() {
-    return {
-      id: '',
-    };
   },
   methods: {
     resetModal() {
