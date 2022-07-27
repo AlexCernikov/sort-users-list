@@ -32,7 +32,7 @@
               :userForUpdate="userForUpdate"
               @onUserUpdate="updateUser"
               @cancel="handleCloseUpdate"/>
-              <DeleteModal
+              <DeleteUserModal
               :show="showDelete"
               :userForDelete="userForDelete"
               @onUserDelete="deleteUser"
@@ -42,10 +42,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import UserCreateModal from '../../Modals/UserCreateModal.vue';
 import UpdateUserModal from '../../Modals/UpdateUserModal.vue';
-import DeleteModal from '../../Modals/DeleteModal.vue';
+import DeleteUserModal from '@/components/Modals/DeleteUserModal.vue';
 import UserItem from './UserItem.vue';
 
 export default defineComponent({
@@ -53,7 +53,7 @@ export default defineComponent({
   components: {
     UserCreateModal,
     UpdateUserModal,
-    DeleteModal,
+    DeleteUserModal,
     UserItem,
   },
   data() {

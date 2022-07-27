@@ -20,7 +20,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { constants } from '../../../public/_globalConsts';
 
 export default defineComponent({
   props: {
@@ -50,11 +49,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
-</style>
-
 <style lang="scss">
 @import '@/../public/styles.scss';
+
         .btn-primary {
             background-color: $orange;
             border: hidden;
@@ -74,13 +71,4 @@ export default defineComponent({
         .btn-primary:disabled, .btn-primary.disabled {
             background-color: #FF5A00;
         }
-  p.my-4 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-  @media (max-width: 415px) {
-    p.my-4 {
-      font-size: 1rem;
-    }
-  }
 </style>
