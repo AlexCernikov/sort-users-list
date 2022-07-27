@@ -20,10 +20,10 @@ export const useUserStore = defineStore('UserStore', {
     async login(credentials) {
       return axios.post('http://135.181.104.18:8081/user/authenticate', credentials)
         .then(({ data }) => {
-          this.$state.user = data.token;
-          localStorage.setItem('token', JSON.stringify(data.token));
+          this.$state.user = data;
+          localStorage.setItem('data', JSON.stringify(data));
           axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
-          console.log('user token is: ', data.token);
+          console.log('user token is: ', data);
         });
     },
     async getCurrentUser() {
@@ -36,7 +36,7 @@ export const useUserStore = defineStore('UserStore', {
         });
     },
     async logout() {
-      localStorage.removeItem('user');
+      localStorage.removeItem('data');
       location.reload();
     },
   },
