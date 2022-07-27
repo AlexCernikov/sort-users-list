@@ -8,12 +8,12 @@
         @hidden="resetModal"
         @cancel="resetModal"
         @show="resetModal"
-        @ok = "handleDelete"
         ok-title = "Delete"
         centered>
-        <p class="my-4">"Are you sure you want to delete?"</p>
+        <p class="my-4">Are you sure you want to delete?</p>
       </b-modal>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from 'vue';
@@ -25,9 +25,6 @@ export default defineComponent({
   methods: {
     resetModal() {
       this.$emit('cancel');
-    },
-    handleDelete() {
-      this.$emit('onUserSubmit', { onDelete: true });
     },
   },
   computed: {
@@ -43,26 +40,25 @@ export default defineComponent({
 
 <style lang="scss">
 @import '@/../public/styles.scss';
-
-  .btn-primary {
-    background-color: $orange;
-    border: hidden;
-    border-radius: 0;
-  }
-  .btn-secondary {
-    border: hidden;
-    border-radius: 0;
-  }
-  .btn-primary:hover {
-    background-color: $orange;
-    box-shadow: 4px 4px 8px #888888;
-  }
-  .btn-secondary:hover {
-    box-shadow: 4px 4px 8px #888888;
-  }
-  .btn-primary:disabled, .btn-primary.disabled {
-    background-color: #FF5A00;
-  }
+        .btn-primary {
+            background-color: $orange;
+            border: hidden;
+            border-radius: 0;
+        }
+        .btn-secondary {
+            border: hidden;
+            border-radius: 0;
+        }
+        .btn-primary:hover {
+            background-color: $orange;
+            box-shadow: 4px 4px 8px #888888;
+        }
+        .btn-secondary:hover {
+            box-shadow: 4px 4px 8px #888888;
+        }
+        .btn-primary:disabled, .btn-primary.disabled {
+            background-color: #FF5A00;
+        }
   p.my-4 {
     font-size: 1.5rem;
     text-align: center;

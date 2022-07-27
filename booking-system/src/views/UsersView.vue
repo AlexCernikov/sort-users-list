@@ -1,12 +1,14 @@
 <template>
-  <UsersAdmin />
+  <UsersList />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import UsersAdmin from '@/components/AdminComponents/UsersAdmin.vue';
+import UsersList from '../components/AdminComponents/UsersAdmin/UsersList.vue';
 
 export default defineComponent({
-  components: { UsersAdmin },
+  components: {
+    UsersList,
+  },
 });
 </script>

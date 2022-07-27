@@ -38,5 +38,4 @@ class EntityApiService extends ApiService {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const entityApiService: EntityApiService = new EntityApiService();
