@@ -10,7 +10,13 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
       name: 'first todo',
       comleted: true,
     }],
-    users: [],
+    users: [{
+      id: '',
+      firstname: '',
+      lastname: '',
+      email: '',
+      role: '',
+    }],
     token: '',
   }),
   getters: {

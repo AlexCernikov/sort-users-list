@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import {useCounterStore} from '../store/useCounter';
-// import {storeToRefs} from 'pinia';
+import {useAdminUserStore} from '../store/useUserStore';
+import {storeToRefs} from 'pinia';
 
-const main = useCounterStore();
-const {counter} = main;
+const main = useAdminUserStore();
+//  const {users} = main;
+ const {users} = storeToRefs(useAdminUserStore());
+
 // console.log('USERCOUNTERS   ', storeToRefs(useCounterStore().counter));
 </script>
 
@@ -13,7 +15,10 @@ const {counter} = main;
     <h1>{{main.counter}}</h1>
     <button @click="main.addOne">clickMe</button>
     <button @click="main.showUsers">clickMe</button>
-    <p>{{main.users}}}</p>
+    <div v-for="user in users" :key="user.id">
+    <p>{{user.id}}</p>
+    </div>
+    
     
   </div>
 </template>
