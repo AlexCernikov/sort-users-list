@@ -100,7 +100,7 @@ export default defineComponent({
       })
         .then((tokenResponse) => {
           this.token = tokenResponse.data.token;
-          localStorage.setItem('Bearer', this.token);
+          localStorage.setItem('token', this.token);
           axios({
             method: 'GET',
             url: 'http://135.181.104.18:8081/user/current',
