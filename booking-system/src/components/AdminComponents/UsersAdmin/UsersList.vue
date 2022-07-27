@@ -42,9 +42,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import UserCreateModal from '../../Modals/UserCreateModal.vue';
-import UpdateUserModal from '../../Modals/UpdateUserModal.vue';
+import UpdateUserModal from '@/components/Modals/UpdateUserModal.vue';
 import DeleteModal from '../../Modals/DeleteModal.vue';
 import UserItem from './UserItem.vue';
 

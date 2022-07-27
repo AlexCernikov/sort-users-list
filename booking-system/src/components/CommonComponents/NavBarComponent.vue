@@ -22,25 +22,23 @@
         <router-link class='navButton' to='/contactUs'>
           Contact Us
         </router-link>
-        <div v-if='!loggedIn'>
-          <button class='navButton' @click='showLogIn = !showLogIn'>
+          <button v-if='!loggedIn' class='navButton' @click='showLogIn = !showLogIn'>
             Log In
             <LogInModal
               :show='showLogIn'
               @onUserSubmit='handleLogIn'
               @cancel='handleCloseLogIn' />
           </button>
-          <button class='navButton--sign' @click='showSignUp = !showSignUp'>
+          <button v-if='!loggedIn' class='navButton--sign' @click='showSignUp = !showSignUp'>
             Sign Up
             <SignUpModal
               :show='showSignUp'
               @onUserSubmit='handleSignUp'
               @cancel='handleCloseSignUp' />
           </button>
-        </div>
-        <div v-else type='button' class='navButton--sign' @click='handleLogout'>
+        <button v-else type='button' class='navButton--sign' @click='handleLogout'>
           Logout
-        </div>
+        </button>
       </div>
     </div>
   </nav>
