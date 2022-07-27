@@ -9,19 +9,15 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: '/contactUs',
-    name: 'contactUs',
-    component: () => import('../views/ContactUsView.vue'),
-  },
-  {
     path: '/myBookings',
     name: 'myBookings',
     component: () => import('../views/MyBookingsView.vue'),
+    meta: { requiresAuth: true },
   },
   {
-    path: '/ourSpacesView',
-    name: 'ourSpacesView',
-    component: () => import('../views/OurSpacesView.vue'),
+    path: '/contactUs',
+    name: 'contactUs',
+    component: () => import('../views/ContactUsView.vue'),
   },
   {
     path: '/admin',
@@ -40,10 +36,6 @@ const routes: Array<RouteRecordRaw> = [
         path: '/admin/entities',
         component: () => import('../views/EntitiesView.vue'),
       },
-      {
-        path: '/admin/settings',
-        component: () => import('../views/SettingsView.vue'),
-      },
     ],
   },
 ];
@@ -53,4 +45,12 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('user');
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+    next('/');
+  }
+  next();
+});
 export default router;
