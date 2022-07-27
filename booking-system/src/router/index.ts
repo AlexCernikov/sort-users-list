@@ -24,16 +24,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/OurSpacesView.vue'),
   },
   {
-    path: '/registerView',
-    name: 'registerView',
-    component: () => import('../views/RegisterView.vue'),
-  },
-  {
-    path: '/loginView',
-    name: 'loginView',
-    component: () => import('../views/LoginView.vue'),
-  },
-  {
     path: '/admin',
     name: 'admin',
     component: AdminView,

@@ -41,10 +41,10 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue';
-import axios from 'axios';
 import { authComputed } from '@/stores/helpers';
 import LogInModal from '../Modals/LogInModal.vue';
 import SignUpModal from '../Modals/SignUpModal.vue';
+import { useUserStore } from '@/stores/UserStore';
 
 export default defineComponent({
   name: 'NavBarComponent',
@@ -56,14 +56,6 @@ export default defineComponent({
     return {
       showLogIn: false,
       showSignUp: false,
-      logInEmail: '',
-      logInPassword: '',
-      registerEmail: '',
-      registerFn: '',
-      registerLn: '',
-      registerPassword: '',
-      token: '',
-      newUser: {},
       toggle: true,
       mobile: 'enable',
       navButtons: [
@@ -86,52 +78,30 @@ export default defineComponent({
       ],
     };
   },
+
   methods: {
-    handleLogIn(data: { email: string; password: string }) {
-      this.logInEmail = data.email;
-      this.logInPassword = data.password;
-      axios({
-        method: 'POST',
-        url: 'http://135.181.104.18:8081/user/authenticate',
-        data: {
-          email: this.logInEmail,
-          password: this.logInPassword,
-        },
+    async handleLogIn(data: { email: string; password: string }) {
+      const userStore = useUserStore();
+      await userStore.login({
+        email: data.email,
+        password: data.password,
       })
-        .then((tokenResponse) => {
-          this.token = tokenResponse.data.token;
-          localStorage.setItem('token', this.token);
-          axios({
-            method: 'GET',
-            url: 'http://135.181.104.18:8081/user/current',
-            headers: {
-              Authorization: `Bearer ${this.token}`,
-              'Content-Type': 'application/json',
-            },
-          })
-            .then((response) => {
-              localStorage.setItem('Role', response.data.role);
-            });
+        .then(() => {
+          this.$router.push({ name: 'home' });
         });
+      await userStore.getCurrentUser();
       this.showLogIn = false;
     },
-    handleSignUp(data: { email: string, password: string, firstName: string; lastName: string }) {
-      this.registerEmail = data.email;
-      this.registerFn = data.firstName;
-      this.registerLn = data.lastName;
-      this.registerPassword = data.password;
-      axios({
-        method: 'POST',
-        url: 'http://135.181.104.18:8081/user/create',
-        data: {
-          email: this.registerEmail,
-          password: this.registerPassword,
-          firstname: this.registerFn,
-          lastname: this.registerLn,
-        },
+    handleSignUp(data: { email: string, password: string, firstname: string; lastname: string }) {
+      const userStore = useUserStore();
+      userStore.register({
+        email: data.email,
+        password: data.password,
+        firstname: data.firstname,
+        lastname: data.lastname,
       })
-        .then((response) => {
-          this.newUser = response;
+        .then(() => {
+          this.$router.push({ name: 'home' });
         });
       this.showSignUp = false;
     },

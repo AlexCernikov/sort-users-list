@@ -2,13 +2,13 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { UserCreateModel, UserModel } from '@/models/user.model';
 
-// eslint-disable-next-line import/prefer-default-export
 export const useUserStore = defineStore('UserStore', {
   state: () => ({
     user: null as UserModel | null,
+    role: null
   }),
   actions: {
-    async register(credentials: UserCreateModel) {
+    async register(credentials) {
       return axios.post('http://135.181.104.18:8081/user/create', credentials)
         .then(({ data }) => {
           this.$state.user = data;
@@ -20,10 +20,19 @@ export const useUserStore = defineStore('UserStore', {
     async login(credentials) {
       return axios.post('http://135.181.104.18:8081/user/authenticate', credentials)
         .then(({ data }) => {
-          this.$state.user = data;
-          localStorage.setItem('data', JSON.stringify(data));
+          this.$state.user = data.token;
+          localStorage.setItem('token', JSON.stringify(data.token));
           axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
-          console.log('user data is: ', data);
+          console.log('user token is: ', data.token);
+        });
+    },
+    async getCurrentUser() {
+      return axios.get('http://135.181.104.18:8081/user/current')
+        .then(({ data }) => {
+          this.$state.role = data.role;
+          localStorage.setItem('role', data.role);
+          axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+          console.log('user role is: ', data.role);
         });
     },
   },

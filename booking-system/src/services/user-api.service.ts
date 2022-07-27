@@ -51,5 +51,4 @@ class UserApiService extends ApiService {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const userApiService: UserApiService = new UserApiService();
