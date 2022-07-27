@@ -13,11 +13,15 @@
           @keyup='toggle = !toggle'>
       </div>
       <div class='nav__guest' :class="toggle ? mobile : ''">
-        <div v-for='(navBtn, index) in navButtons' :key='index'>
-          <router-link class='navButton' :to='navBtn.path'>
-            {{ navBtn.name }}
-          </router-link>
-        </div>
+        <router-link class='navButton' to='/'>
+          Home
+        </router-link>
+        <router-link v-if='loggedIn' class='navButton' to='/myBookings'>
+          My Bookings
+        </router-link>
+        <router-link class='navButton' to='/contactUs'>
+          Contact Us
+        </router-link>
         <div v-if='!loggedIn'>
           <button class='navButton' @click='showLogIn = !showLogIn'>
             Log In
@@ -33,6 +37,9 @@
               @onUserSubmit='handleSignUp'
               @cancel='handleCloseSignUp' />
           </button>
+        </div>
+        <div v-else type='button' class='navButton--sign' @click='handleLogout'>
+          Logout
         </div>
       </div>
     </div>
@@ -58,24 +65,6 @@ export default defineComponent({
       showSignUp: false,
       toggle: true,
       mobile: 'enable',
-      navButtons: [
-        {
-          path: '/',
-          name: 'Home',
-        },
-        {
-          path: '/bookSpace',
-          name: 'Book a Space',
-        },
-        {
-          path: '/myBookings',
-          name: 'My Bookings',
-        },
-        {
-          path: '/contactUs',
-          name: 'Contact Us',
-        },
-      ],
     };
   },
 
@@ -104,6 +93,10 @@ export default defineComponent({
           this.$router.push({ name: 'home' });
         });
       this.showSignUp = false;
+    },
+    handleLogout() {
+      const userStore = useUserStore();
+      userStore.logout();
     },
     handleCloseLogIn() {
       this.showLogIn = false;

@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import { UserCreateModel, UserModel } from '@/models/user.model';
+import { UserModel } from '@/models/user.model';
 
 export const useUserStore = defineStore('UserStore', {
   state: () => ({
     user: null as UserModel | null,
-    role: null
+    role: null,
   }),
   actions: {
     async register(credentials) {
@@ -34,6 +34,10 @@ export const useUserStore = defineStore('UserStore', {
           axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
           console.log('user role is: ', data.role);
         });
+    },
+    async logout() {
+      localStorage.removeItem('user');
+      location.reload();
     },
   },
   getters: {
