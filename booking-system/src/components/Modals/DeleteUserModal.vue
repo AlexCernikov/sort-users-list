@@ -9,11 +9,9 @@
         footer-bg-variant="light"
         ok-title="Delete User"
         @show="resetModal"
-        @hidden="resetModal"
-        @ok="handleDelete">
-        <b-container>
-          <p>Are you sure?</p>
-        </b-container>
+        ok-title = "Delete"
+        centered>
+        <p class="my-4">"Are you sure you want to delete?"</p>
       </b-modal>
     </div>
 </template>
@@ -33,12 +31,6 @@ export default defineComponent({
   methods: {
     resetModal() {
       this.$emit('cancel');
-    },
-    handleCancel() {
-      this.$emit('cancel');
-    },
-    handleDelete() {
-      this.$emit('onUserDelete', this.id);
     },
   },
   computed: {

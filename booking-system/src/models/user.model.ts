@@ -13,3 +13,8 @@ export interface UserCreateModel {
   firstname: string;
   lastname: string;
 }
+
+export interface UserAuthenticateModel {
+  email: string;
+  password: string;
+}

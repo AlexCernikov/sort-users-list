@@ -17,6 +17,7 @@ import SpaceMainComponent from '@/components/HomeViewComponents/SpaceMainCompone
 import FaqComponent from '@/components/HomeViewComponents/FaqComponent.vue';
 import FacilitiesComponent from '@/components/HomeViewComponents/FacilitiesComponent.vue';
 import GalleryComponent from '@/components/HomeViewComponents/GalleryComponent.vue';
+import { authComputed } from '@/stores/helpers';
 import WorkPerksComponent from '../components/HomeViewComponents/WorkPerksComponent.vue';
 import ReviewsComponent from '../components/HomeViewComponents/ReviewsComponent.vue';
 
@@ -30,6 +31,9 @@ export default defineComponent({
     WorkPerksComponent,
     FacilitiesComponent,
     ReviewsComponent,
+  },
+  computed: {
+    ...authComputed,
   },
 });
 </script>

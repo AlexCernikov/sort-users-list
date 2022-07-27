@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-
+.eslintrc.js
 
 # local env files
 .env.local
@@ -25,4 +25,4 @@ pnpm-debug.log*
 #VScode configurations
 .prettierrc
 .idea\workspace.xml
-
+.eslintrc.js

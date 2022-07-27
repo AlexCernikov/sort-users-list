@@ -2,7 +2,7 @@
     <div>
       <b-modal
         v-model="showModal"
-        ref="edit_rezervation_modal"
+        ref="edit_reservation_modal"
         title="Edit reservation"
         header-bg-variant="light"
         body-bg-variant="light"
@@ -13,46 +13,22 @@
         @ok="handleSubmit">
         <b-container fluid>
           <b-form-group
-          label="Date From"
-          label-for="date_from-input">
-            <Datepicker
-              id="date_from-input"
-              autoApply
-              :disabledDates="disabledDates"
-              :placeholder="initialRezervation?.fromDate"
-              v-model="dateFrom"
-              class="mb-2">
-            </Datepicker>
-          </b-form-group>
-          <b-form-group
-            label="Date To"
-            label-for="date_to-input">
-          <Datepicker
-            id="date_to-input"
-            autoApply
-            v-model="dateTo"
-            :placeholder="initialRezervation?.toDate"
-            required>
-          </Datepicker>
-          </b-form-group>
-          <b-form-group
-            label="Price"
-            label-for="price-input">
-          <b-form-input
-            id="date_to-input"
-            type="number"
-            v-model="price"
-            :placeholder="initialRezervation?.price"
-            required></b-form-input>
-          </b-form-group>
-          <b-form-group
-            label="Description"
-            label-for="description-input">
-          <b-form-textarea
-            id="description-input"
-            v-model="description"
-            :placeholder="initialRezervation?.comment"
-            required></b-form-textarea>
+            label="Entity"
+            label-for="entitiesList-input">
+              <template #first>
+                <b-form-select-option :value="null" disabled>
+                  {{ `${selectedEntity.firstname} ${selectedEntity.lastname}` }}
+                </b-form-select-option>
+              </template>
+            <b-form-select
+              v-model="selectedEntity">
+                <b-form-select-option
+                  v-for="entity in entitiesList"
+                  :key="entity"
+                  :value="entity">
+                    {{ `${entity.type} -> ${entity.name}` }}
+                </b-form-select-option>
+            </b-form-select>
           </b-form-group>
           <b-form-group
             label="Users"
@@ -73,22 +49,46 @@
             </b-form-select>
           </b-form-group>
           <b-form-group
-            label="Entity"
-            label-for="entitiesList-input">
-              <template #first>
-                <b-form-select-option :value="null" disabled>
-                  {{ `${selectedEntity.firstname} ${selectedEntity.lastname}` }}
-                </b-form-select-option>
-              </template>
-            <b-form-select
-              v-model="selectedEntity">
-                <b-form-select-option
-                  v-for="entity in entitiesList"
-                  :key="entity"
-                  :value="entity">
-                    {{ `${entity.type} -> ${entity.name}` }}
-                </b-form-select-option>
-            </b-form-select>
+          label="Date From"
+          label-for="date_from-input">
+            <Datepicker
+              id="date_from-input"
+              autoApply
+              :disabledDates="disabledDates"
+              :placeholder="initialReservation?.fromDate"
+              v-model="dateFrom"
+              class="mb-2">
+            </Datepicker>
+          </b-form-group>
+          <b-form-group
+            label="Date To"
+            label-for="date_to-input">
+          <Datepicker
+            id="date_to-input"
+            autoApply
+            v-model="dateTo"
+            :placeholder="initialReservation?.toDate"
+            required>
+          </Datepicker>
+          </b-form-group>
+          <b-form-group
+            label="Price"
+            label-for="price-input">
+          <b-form-input
+            id="date_to-input"
+            type="number"
+            v-model="price"
+            :placeholder="initialReservation?.price"
+            required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="Description"
+            label-for="description-input">
+          <b-form-textarea
+            id="description-input"
+            v-model="description"
+            :placeholder="initialReservation?.comment"
+            required></b-form-textarea>
           </b-form-group>
         </b-container>
       </b-modal>
@@ -108,18 +108,18 @@ export default defineComponent({
   },
   props: {
     show: Boolean,
-    initialRezervation: Object,
+    initialReservation: Object,
   },
   data() {
     return {
-      id: this.initialRezervation?.id,
+      id: this.initialReservation?.id,
       disabledDates: ['2022-07-22T10:07:27.271+00:00', '2022-07-15T10:07:27.271+00:00'],
-      dateFrom: '',
-      dateTo: '',
-      price: null,
-      description: '',
-      selectedUser: this.initialRezervation?.user,
-      selectedEntity: this.initialRezervation?.reservationEntity,
+      dateFrom: this.initialReservation?.fromDate,
+      dateTo: this.initialReservation?.toDate,
+      price: this.initialReservation?.price,
+      description: this.initialReservation?.description,
+      selectedUser: this.initialReservation?.user,
+      selectedEntity: this.initialReservation?.reservationEntity,
       usersList: [],
       entitiesList: [],
     };
@@ -151,6 +151,7 @@ export default defineComponent({
       })
         .then((response) => {
           console.log(response);
+          this.$emit('ok');
         });
     },
   },

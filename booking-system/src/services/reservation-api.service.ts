@@ -38,5 +38,4 @@ class ReservationApiService extends ApiService {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const reservationApiService: ReservationApiService = new ReservationApiService();

@@ -44,8 +44,8 @@
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import UserCreateModal from '../../Modals/UserCreateModal.vue';
-import UpdateUserModal from '../../Modals/UpdateUserModal.vue';
 import DeleteUserModal from '@/components/Modals/DeleteUserModal.vue';
+import UpdateUserModal from '@/components/Modals/UpdateUserModal.vue';
 import UserItem from './UserItem.vue';
 
 export default defineComponent({
