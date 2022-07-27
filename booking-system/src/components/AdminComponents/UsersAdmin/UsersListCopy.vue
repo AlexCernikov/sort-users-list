@@ -28,6 +28,12 @@ const main = useAdminUserStore();
                 <th style="width: 10%"></th>
             </tr>
         </thead>
+        <details>
+          <summary>
+dfgsdgfgf
+          </summary>
+          ggggg
+        </details>
         <tbody>
             <template v-if="users.length">
                 <tr v-for="user in users" :key="user.id">
