@@ -6,7 +6,7 @@
             Create User
             <UserCreateModal
               :show="showCreate"
-              @onUserCreate="createUser"
+              @onUserCreate="main.createUser"
               @cancel="handleCloseCreate"/>
           </button>
     </div>
@@ -68,7 +68,6 @@ export default defineComponent({
       showCreate: false,
       showUpdate: false,
       showDelete: false,
-      newUser: {},
       userForUpdate: {
         id: 0,
         email: '',
@@ -88,41 +87,42 @@ export default defineComponent({
     async getAllUsers() {
     this.main.getUsers();
     },
-    createUser(data: { email:string, password:string, firstName:string; lastName:string }) {
-      console.log(data);
-      axios.post(
-        'http://135.181.104.18:8081/user/create',
-        {
-          email: data.email,
-          password: data.password,
-          firstname: data.firstName,
-          lastname: data.lastName,
-        },
-      )
-        .then((response) => {
-          console.log(response);
-        });
-      this.showCreate = false;
-    },
+    // createUser(data: { email:string, password:string, firstName:string; lastName:string }) {
+    //   console.log(data);
+    //   axios.post(
+    //     'http://135.181.104.18:8081/user/create',
+    //     {
+    //       email: data.email,
+    //       password: data.password,
+    //       firstname: data.firstName,
+    //       lastname: data.lastName,
+    //     },
+    //   )
+    //     .then((response) => {
+    //       console.log(response);
+    //     });
+    //   this.showCreate = false;
+    // },
     showUpdateUserItem(showUpdate, user) {
       this.showUpdate = showUpdate;
       this.userForUpdate = user;
-      this.userForUpdateId = user.id;
-      this.userForUpdate.role = user.role;
     },
     showDeleteUserItem(showDelete, user) {
       this.showDelete = showDelete;
-      this.userForDelete = user;
-      this.userForDeleteId = user.id;
+      this.main.userForDeleteId = user.id;
+      console.log('userForDeleteId', user.id)
     },
     handleCloseCreate() {
       this.showCreate = false;
+      this.getAllUsers();
     },
     handleCloseUpdate() {
       this.showUpdate = false;
+      this.getAllUsers();
     },
     handleCloseDelete() {
       this.showDelete = false;
+      this.getAllUsers();
     },
   },
 });

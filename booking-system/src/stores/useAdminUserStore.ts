@@ -4,36 +4,15 @@ import axios from 'axios';
 export const useAdminUserStore = defineStore('AdminUserStore', {
   state: () => ({
     counter: 0,
-    name: 'Alex',
-    todos: [{
-      id: 1,
-      name: 'first todo',
-      comleted: true,
-    }],
-    users: [{
-      id: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      role: '',
-    }],
-    uId:'',
+    name: 'adminUsersStore',
+    users: {},
     token: '',
     userForUpdate: '',
+    userForDelete: {},
+    userForDeleteId: '',
     showUpdate: false,
   }),
-  getters: {
-    doubleCount: (state) => {
-        state.counter * 2;
-    },
-},
   actions: {
-    reset() {
-        this.counter = 0;
-    },
-    addOne() {
-        this.counter++;
-    },
     async getUsers() {
       return axios
         .get('http://135.181.104.18:8081/user')
@@ -42,9 +21,20 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
           console.log('users :', data);
         });
     },
-    updModal(id) {
-      this.showUpdate = true;
-      console.log('UPDATEUSER', id);
+    createUser(data: { email:string, password:string, firstName:string; lastName:string }) {
+      console.log(data);
+      axios.post(
+        'http://135.181.104.18:8081/user/create',
+        {
+          email: data.email,
+          password: data.password,
+          firstname: data.firstName,
+          lastname: data.lastName,
+        },
+      )
+        .then((response) => {
+          console.log('Create',response);
+        });
     },
     updateUser(data: { email:string, password:string,
       firstname:string; lastname:string; id:number; role:string;}) {
@@ -68,6 +58,18 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
             console.log(this.userForUpdate);
           });
         this.showUpdate = false;
+      },
+      deleteUser() {
+        console.log('DELETEID', this.userForDeleteId)
+        axios
+          .delete(`http://135.181.104.18:8081/user/${this.userForDeleteId}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          })
+          .then((response) => {
+            this.userForDelete = response;
+          });
       },
       handleCloseUpdate() {
         this.showUpdate = false;
