@@ -63,6 +63,24 @@ export default defineComponent({
       showSignUp: false,
       toggle: true,
       mobile: 'enable',
+      navButtons: [
+        {
+          path: '/',
+          name: 'Home',
+        },
+        {
+          path: '/bookSpace',
+          name: 'Book a Space',
+        },
+        {
+          path: '/myBookings',
+          name: 'My Bookings',
+        },
+        {
+          path: '/contactUs',
+          name: 'Contact Us',
+        },
+      ],
     };
   },
 

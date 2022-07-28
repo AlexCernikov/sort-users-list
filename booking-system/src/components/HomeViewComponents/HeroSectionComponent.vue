@@ -3,63 +3,38 @@
   <div class="hero--container">
     <div class="hero--top">
       <h2><span>Book</span> a perfect spot in the office</h2>
-      <p class="hero--description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nemo nihil, placeat asperiores totam consectetur,
-        dolorum numquam animi minima, laudantium quis molestias
-        saepe quam velit quisquam atque minus assumenda reprehenderit id!</p>
+      <p class="hero--description">Lorem</p>
     </div>
     <div class="hero--bot">
-      <div class="hero-bottom-wrapper">
-        <div class="hero--form__wrapper">
-          <div class="hero--form">
-            <div class="form-name">Find your Space Now</div>
-            <div class="form-question">
-              <div class="left-content">
-                <p>Type</p>
-                <p>Private Space</p>
-              </div>
-              <div class="right-content">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                  <polyline fill="none" stroke="#FFF" stroke-width="2"
-                            points="7.086 3.174 17.086 13.174 7.086 23.174"
-                            transform="scale(1 -1) rotate(-89 -1.32 0)"/>
-                </svg>
-              </div>
+        <div class="hero--bot--form">
+          <form @submit.prevent="handleSubmit" @change="checkInput">
+              <p v-if="showError">Please enter all data</p>
+              <label for="space-type">
+                <select name="space-type" id="space-type" v-model="this.type">
+                  <option value="" disabled selected hidden>Select Space Type</option>
+                  <option v-for="(type,index) in entityTypeSet" :key="index">{{type}}</option>
+                </select>
+              </label>
+
+            <label for="space-name">
+              <select name="space-name" id="space-name" :value="this.name" @change="event => this.name = event.target.value">
+                <option value="" selected disabled hidden>{{this.type ? '' : 'Choose Type First'}}</option>
+              <option v-for="(item,index) in filter(this.type)" :key="index" >{{item.name}}</option>
+
+              </select>
+            </label>
+
+            <CalendarComponent  @date-picked='registerDate'/>
+
+            <button type="submit">submit</button>
+            <div>
             </div>
-            <div class="form-question">
-              <div class="left-content">
-                <p>Date</p>
-                <p>9 Aug</p>
-              </div>
-              <div class="right-content">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                  <polyline fill="none" stroke="#FFF" stroke-width="2"
-                            points="7.086 3.174 17.086 13.174 7.086 23.174"
-                            transform="scale(1 -1) rotate(-89 -1.32 0)"/>
-                </svg>
-              </div>
-            </div>
-            <div class="form-question">
-              <div class="left-content">
-                <p>Time</p>
-                <p>9:00 - 18:00</p>
-              </div>
-              <div class="right-content">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                  <polyline fill="none" stroke="#FFF" stroke-width="2"
-                            points="7.086 3.174 17.086 13.174 7.086 23.174"
-                            transform="scale(1 -1) rotate(-89 -1.32 0)"/>
-                </svg>
-              </div>
-            </div>
-            <div class="form-submit">Find my Space</div>
-            </div>
+          </form>
         </div>
         <div class="img-background">
           <img src="@/assets/900x600_img.png" alt="office_image">
         </div>
 
-          </div>
     </div>
   </div>
 </div>
@@ -68,21 +43,95 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import CalendarComponent from './CalendarComponent.vue';
+import axios from 'axios'
+import { EntityModel } from '@/models/entity.model';
 
 export default defineComponent({
   name: 'HeroSectionComponent',
+  data() {
+    return {
+      token: '',
+      Entities: [] as EntityModel[],
+      EntitiesNames: [] as string[],
+      type: '',
+      date: '',
+      name: '',
+      showError: false,
+      entityTypeSet: new Set(),
+      // We use a set because it allows to keep only distinct values
+    }
+  },
+  created(){
+    // data and token fetch should be done @pinia, but for now we are going to use a placeholder function
+     axios.post('http://135.181.104.18:8081/user/authenticate', {
+      email: 'anonymous@isd.com',
+      password: 'qwe123',
+    })
+      .then((response) => {
+        if (response.data.token) {
+          this.token = response.data.token;
+          localStorage.setItem('token', this.token);
+        }
+
+      });
+    axios.get('http://135.181.104.18:8081/reservationEntities', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+      .then((response) => {
+        if (response.data) {
+          this.Entities = response.data;
+          for (let i=0; i<this.Entities.length; i++){
+            this.EntitiesNames.push(this.Entities[i].name)
+          }
+          for (let i = 0; i<response.data.length; i++)
+          {
+            this.entityTypeSet.add(response.data[i].type)
+          };
+        }
+      });
+  },
+
+  components: { CalendarComponent },
+  methods: {
+    filter(type: string) {
+      // We filter Entities to only get the entries with a certain type
+      return this.Entities.filter((item)=> item.type === type);
+    },
+    checkInput(){
+      if (!this.type || !this.date || !this.name) {
+        this.showError= false;
+      }
+    },
+    handleSubmit() {
+      if ( this.type && this.name && this.date ) {
+        this.showError = false;
+        let result = {type: this.type,
+        name: this.name,
+        dateFrom: this.date[0],
+        dateTo: this.date[1]};
+        this.type = '';
+        this.name = '',
+        this.date = '';
+        console.log(result)
+      }
+      else {
+        this.showError = true;
+      }
+    },
+    registerDate(date) {
+      this.date = date;
+    }
+  }
+
 });
 </script>
 
 <style scoped lang="scss">
 
 @import 'public/styles.scss';
-
-img {
-  width: 45vw;
-  min-width: 500px;
-  z-index: -12;
-}
 
 .hero--container__wrapper {
   width: 100vw;
@@ -103,7 +152,6 @@ span {
 
 h2 {
   font-family: $roboto;
-  font-style: normal;
   color: $aubergine;
   font-weight: 700;
   font-size: 52px;
@@ -128,94 +176,25 @@ h2 {
 .hero--top {
   display: grid;
   grid-template-columns:50% 50%;
-  width: 100%;
-  margin-top: 50px;
+  width: 95%;
+  margin: 20px 0;
 }
 
 .hero--bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.hero-bottom-wrapper {
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+.hero--bot--form{
+  width: 400px;
+  height: 500px;
+  border: 2px solid red;
 }
 
-.hero--form__wrapper {
-  width: 100px;
-}
-.hero--form {
-  position: relative;
-  width: 350px;
-  height: 450px;
-  background-color: $aubergine;
-  display: grid;
-  font-size: 1.5rem;
-  flex-direction: column;
-}
 
-.hero--form > div {
-  width: 80%;
-  background-color: $black;
-  margin: 15px auto;
-  color: rgb(234, 234, 234);
-
-}
-
-.hero--form > div:last-child {
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $orange;
-  color: white;
-  font-family: $roboto;
-}
-
-.hero--form > div:first-child {
-  margin-top: 20px;
-  background: none;
-  font-size: 2rem;
-  color: rgb(235, 235, 235);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: $roboto;
-}
-
-.left-content > p {
-  margin: 0;
-  padding: 0;
-}
-
-.form-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 10px;
-}
-
-.form-question > div {
-  margin: 0 40px;
-}
-
-.form-question > div > p:first-child {
-  margin-bottom: 5px;
-}
-
-.left-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.left-content > p {
-  font-size: 1rem;
+img {
+  width: 400px;
 }
 </style>

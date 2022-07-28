@@ -1,27 +1,29 @@
 <template>
-  <section class="home__page">
-    <header v-if="showSections()">
+  <section class='home__page'>
+    <header v-if='showSections()'>
       <NavBarComponent />
     </header>
-    <div id="main">
-      <div class="main-content">
-        <router-view :isAdmin="isAdmin" />
-        <MapComponent v-if="showSections()" />
-        <BecomeMemberComponent v-if="showSections()" />
+    <div id='main'>
+      <div class='main-content'>
+        <router-view :isAdmin='isAdmin' />
+        <MapComponent v-if='showSections()' />
+        <BecomeMemberComponent v-if='showSections()' />
       </div>
     </div>
-    <footer v-if="showSections()" class="footer-bar">
+    <footer v-if='showSections()' class='footer-bar'>
       <FooterComponent />
     </footer>
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent, watch } from 'vue';
+<script lang='ts'>
+import { defineComponent } from 'vue';
 import FooterComponent from '@/components/CommonComponents/FooterComponent.vue';
 import MapComponent from '@/components/CommonComponents/MapComponent.vue';
 import BecomeMemberComponent from '@/components/CommonComponents/BecomeMemberComponent.vue';
 import NavBarComponent from './components/CommonComponents/NavBarComponent.vue';
+import { useUserStore } from '@/stores/UserStore';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'navBarComponent',
@@ -52,6 +54,20 @@ export default defineComponent({
       isAdminRoute: false,
     };
   },
+  created() {
+    const getUserData = localStorage.getItem('data');
+    const getUserRole = localStorage.getItem('role');
+    if (getUserData && getUserRole) {
+      const userData = JSON.parse(getUserData);
+      const userRole = getUserRole;
+      const userStore = useUserStore();
+      userStore.$state.user = userData;
+      userStore.$state.role = userRole;
+      localStorage.setItem('data', JSON.stringify(userData));
+      localStorage.setItem('role', userRole);
+      axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
+    }
+  },
   methods: {
     showSections() {
       return !(this.isAdmin && this.isAdminRoute);
@@ -60,7 +76,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 @use 'sass:math';
 @import './public/styles';
 
