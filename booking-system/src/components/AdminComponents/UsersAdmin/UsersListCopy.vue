@@ -1,4 +1,4 @@
-<script setup  lang="ts">
+<!-- <script setup  lang="ts">
 import { defineComponent } from 'vue';
 import { mapStores } from 'pinia';
 import {useAdminUserStore} from '../../../stores/useAdminUserStore';
@@ -6,15 +6,7 @@ import {storeToRefs} from 'pinia';
 import UpdateUserModal from '@/components/Modals/UpdateUserModal.vue';
 const main = useAdminUserStore();
 const {users} = storeToRefs(useAdminUserStore());
-main.showUsers();
-
-// export default defineComponent({
-//     components: {
-
-//     }
-
-
-// });
+main.getUsers();
 
 </script>
 
@@ -51,7 +43,7 @@ main.showUsers();
                     <td>{{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
                     <td style="white-space: nowrap">
-                    <button @click="main.updModal" :update="user">clickMe</button>
+                    <button @click="main.updModal(user.id)">clickMe</button>
                         <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
                         <!-- <button @click="usersStore.delete(user.id)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting"> -->
                             <!-- <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
@@ -75,4 +67,4 @@ main.showUsers();
   </div>
 </template>
 
-
+ -->

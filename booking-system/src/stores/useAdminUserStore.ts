@@ -71,8 +71,5 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
             this.userForDelete = response;
           });
       },
-      handleCloseUpdate() {
-        this.showUpdate = false;
-      },
   },
 });
