@@ -9,24 +9,7 @@
               @onUserCreate="createUser"
               @cancel="handleCloseCreate"/>
           </button>
-
     </div>
-    <!-- <div class="table-list">
-            <ul class="list">
-              <li class="table-item table-item1"> </li>
-              <li class="table-item table-item2">First Name</li>
-              <li class="table-item table-item3">Last Name</li>
-              <li class="table-item table-item4">Email</li>
-            </ul>
-            </div>
-            <UserItem
-          v-for="user in users "
-          :key="user.id"
-          :user="user"
-          @update='update'
-          @showUpdateUserItem="showUpdateUserItem"
-          @showDeleteUserItem="showDeleteUserItem"
-          /> -->
           <table class="table table-striped">
         <thead>
             <tr>
@@ -43,25 +26,11 @@
                     <td>{{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
                     <td style="white-space: nowrap">
-                    <button @click="main.updModal(user.id)">clickMe</button>
-                        <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
-                        <!-- <button @click="usersStore.delete(user.id)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting"> -->
-                            <!-- <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
-                            <span v-else>Delete</span> -->
-                        <!-- </button> -->
+                    <button @click="showUpdateUserItem(!showUpdate, user)" class="btn btn-sm btn-primary mr-1">Edit</button>
+                    <button type="button" class="btn btn-sm btn-secondary mr-1">Delete</button>
                     </td>
                 </tr>
             </template>
-            <!-- <tr v-if="users.loading">
-                <td colspan="4" class="text-center">
-                    <span class="spinner-border spinner-border-lg align-center"></span>
-                </td>
-            </tr>
-            <tr v-if="users.error">
-                <td colspan="4">
-                    <div class="text-danger">Error loading users: {{users.error}}</div>
-                </td>
-            </tr>             -->
         </tbody>
     </table>
           <UpdateUserModal
@@ -83,9 +52,9 @@ import axios from 'axios';
 import UserCreateModal from '../../Modals/UserCreateModal.vue';
 import DeleteUserModal from '@/components/Modals/DeleteUserModal.vue';
 import UpdateUserModal from '@/components/Modals/UpdateUserModal.vue';
-// import UserItem from './UserItem.vue';
 import {useAdminUserStore} from '../../../stores/useAdminUserStore';
 import {storeToRefs} from 'pinia';
+import { main } from '@popperjs/core';
 const {users} = storeToRefs(useAdminUserStore());
 
 export default defineComponent({
@@ -94,7 +63,6 @@ export default defineComponent({
     UserCreateModal,
     UpdateUserModal,
     DeleteUserModal,
-    // UserItem,
   },
   setup() {
     const {users} = storeToRefs(useAdminUserStore());
@@ -123,9 +91,14 @@ export default defineComponent({
   },
   mounted() {
     this.showUsers();
+    this.main.showUsers;
+    console.log('FFFFFFF', this.main.showUsers);
   },
   methods: {
     showUsers() {
+        const main = useAdminUserStore();
+        main.showUsers();
+        console.log('FFFFFFF', main.showUsers);
       axios({
         method: 'POST',
         url: 'http://135.181.104.18:8081/user/authenticate',
@@ -169,42 +142,42 @@ export default defineComponent({
       this.showCreate = false;
       this.showUsers();
     },
-    updateUser(data: { email:string, password:string,
-    firstName:string; lastName:string; id:number; role:string;}) {
-      axios.put(
-        'http://135.181.104.18:8081/user',
-        {
-          firstname: data.firstName,
-          lastname: data.lastName,
-          role: data.role,
-          id: data.id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
-      )
-        .then((response) => {
-          console.log(response);
-          console.log(this.userForUpdate);
-        });
-      this.showUpdate = false;
-      this.showUsers();
-    },
-    deleteUser() {
-      axios
-        .delete(`http://135.181.104.18:8081/user/${this.userForDeleteId}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        })
-        .then((response) => {
-          this.userForDelete = response;
-        });
-      this.showDelete = false;
-      this.showUsers();
-    },
+    // updateUser(data: { email:string, password:string,
+    // firstName:string; lastName:string; id:number; role:string;}) {
+    //   axios.put(
+    //     'http://135.181.104.18:8081/user',
+    //     {
+    //       firstname: data.firstName,
+    //       lastname: data.lastName,
+    //       role: data.role,
+    //       id: data.id,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //       },
+    //     },
+    //   )
+    //     .then((response) => {
+    //       console.log(response);
+    //       console.log(this.userForUpdate);
+    //     });
+    //   this.showUpdate = false;
+    //   this.showUsers();
+    // },
+    // deleteUser() {
+    //   axios
+    //     .delete(`http://135.181.104.18:8081/user/${this.userForDeleteId}`, {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       this.userForDelete = response;
+    //     });
+    //   this.showDelete = false;
+    //   this.showUsers();
+    // },
     showUpdateUserItem(showUpdate, user) {
       this.showUpdate = showUpdate;
       this.userForUpdate = user;
@@ -228,6 +201,8 @@ export default defineComponent({
   },
 });
 </script>
+
+
 
 <style scoped lang='scss'>
 @import 'public/styles.scss';
