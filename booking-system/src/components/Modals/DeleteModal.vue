@@ -1,18 +1,17 @@
 <template>
-  <div>
-    <b-modal
-      ref='modal'
-      v-model='showModal'
-      title='Delete'
-      header-bg-variant='light'
-      body-bg-variant='light'
-      footer-bg-variant='light'
-      ok-title='Delete'
-      centered
-      @show='resetModal'>
-      <p class='my-4'>"Are you sure you want to delete?"</p>
-    </b-modal>
-  </div>
+  <b-modal
+    id="delete-modal"
+    v-model="showModal"
+    header-bg-variant="light"
+    body-bg-variant="light"
+    footer-bg-variant="light"
+    centered
+    ok-title="Delete"
+    @hidden="resetModal"
+    @cancel="resetModal"
+    @show="resetModal">
+    <p class="my-4">Are you sure you want to delete?</p>
+  </b-modal>
 </template>
 
 <script lang='ts'>
@@ -21,11 +20,6 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
     show: Boolean,
-  },
-  data() {
-    return {
-      id: '',
-    };
   },
   methods: {
     resetModal() {
