@@ -1,23 +1,39 @@
-<script setup lang="ts">
-import {useAdminUserStore} from '../../../store/useUserStore';
+<script setup  lang="ts">
+import { defineComponent } from 'vue';
+import { mapStores } from 'pinia';
+import {useAdminUserStore} from '../../../stores/useAdminUserStore';
 import {storeToRefs} from 'pinia';
-
+import UpdateUserModal from '@/components/Modals/UpdateUserModal.vue';
 const main = useAdminUserStore();
-//  const {users} = main;
- const {users} = storeToRefs(useAdminUserStore());
+const {users} = storeToRefs(useAdminUserStore());
+main.showUsers();
 
-// console.log('USERCOUNTERS   ', storeToRefs(useCounterStore().counter));
+// export default defineComponent({
+//     components: {
+
+//     }
+
+
+// });
+
 </script>
 
 <template>
-  <div class="contactUs">
+  <div class="users-list">
     <h1>This is the "Contact Us" page. Under Development</h1>
-    <h1>{{main.counter}}</h1>
+    <h1>{{}}</h1>
     <button @click="main.addOne">clickMe</button>
-    <button @click="main.showUsers">clickMe</button>
-    <div v-for="user in users" :key="user.id">
+    <button @click="main.updUser">clickMe</button>
+
+    <!-- <button @click="main.showUsers">clickMe</button> -->
+    <!-- <div v-for="user in users" :key="user.id">
     <p>{{user.id}}</p>
-    </div>
+    </div> -->
+<UpdateUserModal
+              :show="main.showUpdate"
+              :userForUpdate="main.userForUpdate"
+              @onUserUpdate="main.updateUser"
+              @cancel="main.handleCloseUpdate"/>
 
     <table class="table table-striped">
         <thead>
@@ -28,12 +44,6 @@ const main = useAdminUserStore();
                 <th style="width: 10%"></th>
             </tr>
         </thead>
-        <details>
-          <summary>
-dfgsdgfgf
-          </summary>
-          ggggg
-        </details>
         <tbody>
             <template v-if="users.length">
                 <tr v-for="user in users" :key="user.id">
@@ -41,6 +51,7 @@ dfgsdgfgf
                     <td>{{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
                     <td style="white-space: nowrap">
+                    <button @click="main.updModal" :update="user">clickMe</button>
                         <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
                         <!-- <button @click="usersStore.delete(user.id)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting"> -->
                             <!-- <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
@@ -61,8 +72,6 @@ dfgsdgfgf
             </tr>             -->
         </tbody>
     </table>
-    
-    
   </div>
 </template>
 

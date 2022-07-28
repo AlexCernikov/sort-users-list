@@ -11,7 +11,7 @@
           </button>
 
     </div>
-    <div class="table-list">
+    <!-- <div class="table-list">
             <ul class="list">
               <li class="table-item table-item1"> </li>
               <li class="table-item table-item2">First Name</li>
@@ -26,7 +26,44 @@
           @update='update'
           @showUpdateUserItem="showUpdateUserItem"
           @showDeleteUserItem="showDeleteUserItem"
-          />
+          /> -->
+          <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 30%">First Name</th>
+                <th style="width: 30%">Last Name</th>
+                <th style="width: 30%">Username</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <template v-if="users.length">
+                <tr v-for="user in main.users" :key="user.id">
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td style="white-space: nowrap">
+                    <button @click="main.updModal(user.id)">clickMe</button>
+                        <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
+                        <!-- <button @click="usersStore.delete(user.id)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting"> -->
+                            <!-- <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                            <span v-else>Delete</span> -->
+                        <!-- </button> -->
+                    </td>
+                </tr>
+            </template>
+            <!-- <tr v-if="users.loading">
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+            <tr v-if="users.error">
+                <td colspan="4">
+                    <div class="text-danger">Error loading users: {{users.error}}</div>
+                </td>
+            </tr>             -->
+        </tbody>
+    </table>
           <UpdateUserModal
               :show="showUpdate"
               :userForUpdate="userForUpdate"
@@ -37,7 +74,6 @@
               :userForDelete="userForDelete"
               @onUserDelete="deleteUser"
               @cancel="handleCloseDelete"/>
-              {{main}}
   </div>
 </template>
 
@@ -47,8 +83,10 @@ import axios from 'axios';
 import UserCreateModal from '../../Modals/UserCreateModal.vue';
 import DeleteUserModal from '@/components/Modals/DeleteUserModal.vue';
 import UpdateUserModal from '@/components/Modals/UpdateUserModal.vue';
-import UserItem from './UserItem.vue';
+// import UserItem from './UserItem.vue';
 import {useAdminUserStore} from '../../../stores/useAdminUserStore';
+import {storeToRefs} from 'pinia';
+const {users} = storeToRefs(useAdminUserStore());
 
 export default defineComponent({
   name: 'UsersList',
@@ -56,12 +94,12 @@ export default defineComponent({
     UserCreateModal,
     UpdateUserModal,
     DeleteUserModal,
-    UserItem,
+    // UserItem,
   },
   setup() {
-const main = useAdminUserStore();
-
-return {main};
+    const {users} = storeToRefs(useAdminUserStore());
+    const main = useAdminUserStore();
+    return {main};
   },
   data() {
     return {

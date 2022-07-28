@@ -31,7 +31,7 @@
           <b-form-input
             id="lastName-input"
             v-model="enteredLastName"
-            :placeholder="userForUpdate?.lastname"
+            :placeholder="uId"
             :state="lastNameState"
             required></b-form-input>
           </b-form-group>
@@ -43,6 +43,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { constants } from '../../../public/_globalConsts';
+import {useAdminUserStore} from '../../stores/useAdminUserStore';
 
 export default defineComponent({
   props: {
@@ -50,6 +51,10 @@ export default defineComponent({
     userForUpdate: {
       type: Object,
     },
+    updateU: {
+      type: Object,
+    },
+    uId:null,
   },
   data() {
     return {
@@ -60,6 +65,7 @@ export default defineComponent({
       enteredPassword: '',
       chkEnteredPasword: '',
       enteredEmail: '',
+      update: Object,
     };
   },
   methods: {
@@ -84,6 +90,7 @@ export default defineComponent({
       });
       console.log('USERFORUPDATE', this.userForUpdate?.firstname);
     },
+
   },
   computed: {
     showModal() {
