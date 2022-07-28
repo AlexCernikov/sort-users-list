@@ -23,17 +23,12 @@ export default defineComponent({
   props: {
     show: Boolean,
   },
-  data() {
-    return {
-      id: '',
-    };
-  },
   methods: {
     resetModal() {
       this.$emit('cancel');
     },
     handleDelete() {
-      this.$emit('onUserDelete', this.id);
+      this.$emit('onUserDelete');
     },
   },
   computed: {

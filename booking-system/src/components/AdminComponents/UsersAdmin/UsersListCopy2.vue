@@ -36,6 +36,7 @@
               :userForUpdate="userForUpdate"
               @onUserUpdate="main.updateUser"
               @cancel="handleCloseUpdate"/>
+              
               <DeleteUserModal
               :show="showDelete"
               :userForDelete="userForDelete"
@@ -68,13 +69,7 @@ export default defineComponent({
       showCreate: false,
       showUpdate: false,
       showDelete: false,
-      userForUpdate: {
-        id: 0,
-        email: '',
-        firstname: '',
-        lastname: '',
-        role: '',
-      },
+      userForUpdate: {},
       userForUpdateId: '',
       userForDelete: {},
       userForDeleteId: '',
@@ -87,22 +82,6 @@ export default defineComponent({
     async getAllUsers() {
     this.main.getUsers();
     },
-    // createUser(data: { email:string, password:string, firstName:string; lastName:string }) {
-    //   console.log(data);
-    //   axios.post(
-    //     'http://135.181.104.18:8081/user/create',
-    //     {
-    //       email: data.email,
-    //       password: data.password,
-    //       firstname: data.firstName,
-    //       lastname: data.lastName,
-    //     },
-    //   )
-    //     .then((response) => {
-    //       console.log(response);
-    //     });
-    //   this.showCreate = false;
-    // },
     showUpdateUserItem(showUpdate, user) {
       this.showUpdate = showUpdate;
       this.userForUpdate = user;

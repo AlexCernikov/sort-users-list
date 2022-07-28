@@ -21,7 +21,7 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
           console.log('users :', data);
         });
     },
-    createUser(data: { email:string, password:string, firstName:string; lastName:string }) {
+    async createUser(data: { email:string, password:string, firstName:string; lastName:string }) {
       console.log(data);
       axios.post(
         'http://135.181.104.18:8081/user/create',
@@ -36,7 +36,7 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
           console.log('Create',response);
         });
     },
-    updateUser(data: { email:string, password:string,
+    async updateUser(data: { email:string, password:string,
       firstname:string; lastname:string; id:number; role:string;}) {
       console.log('DDDDDDDDATA', data, data.id, data.lastname, data.email, this.showUpdate);
         axios.put(
@@ -59,7 +59,7 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
           });
         this.showUpdate = false;
       },
-      deleteUser() {
+      async deleteUser() {
         console.log('DELETEID', this.userForDeleteId)
         axios
           .delete(`http://135.181.104.18:8081/user/${this.userForDeleteId}`, {
