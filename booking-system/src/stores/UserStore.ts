@@ -5,7 +5,7 @@ import { UserModel } from '@/models/user.model';
 export const useUserStore = defineStore('UserStore', {
   state: () => ({
     user: null as UserModel | null,
-    role: null,
+    role: null as string | null,
   }),
   actions: {
     async register(credentials) {
@@ -37,6 +37,7 @@ export const useUserStore = defineStore('UserStore', {
     },
     async logout() {
       localStorage.removeItem('data');
+      localStorage.removeItem('role');
       location.reload();
     },
   },

@@ -7,7 +7,7 @@
       header-bg-variant='light'
       body-bg-variant='light'
       footer-bg-variant='light'
-      ok-title='Delete'
+      ok-title='Delete User'
       centered
       @show='resetModal'>
       <p class='my-4'>"Are you sure you want to delete?"</p>
