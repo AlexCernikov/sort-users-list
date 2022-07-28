@@ -66,8 +66,6 @@ export default defineComponent({
       localStorage.setItem('data', JSON.stringify(userData));
       localStorage.setItem('role', userRole);
       axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
-      console.log('user token is: ', userData);
-      console.log('user token is: ', userRole);
     }
   },
   methods: {
