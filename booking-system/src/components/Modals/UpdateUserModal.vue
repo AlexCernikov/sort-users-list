@@ -31,7 +31,7 @@
           <b-form-input
             id="lastName-input"
             v-model="enteredLastName"
-            :placeholder="uId"
+            :placeholder="userForUpdate?.lastname"
             :state="lastNameState"
             required></b-form-input>
           </b-form-group>
@@ -51,10 +51,6 @@ export default defineComponent({
     userForUpdate: {
       type: Object,
     },
-    updateU: {
-      type: Object,
-    },
-    uId:null,
   },
   data() {
     return {
@@ -83,12 +79,12 @@ export default defineComponent({
     updateUser() {
       this.$emit('onUserUpdate', {
         email: this.userForUpdate?.email,
-        firstName: this.enteredFirstName,
-        lastName: this.enteredLastName,
+        firstname: this.enteredFirstName,
+        lastname: this.enteredLastName,
         id: this.userForUpdate?.id,
         role: this.userForUpdate?.role,
       });
-      console.log('USERFORUPDATE', this.userForUpdate?.firstname);
+      console.log('USERFORUPDATE', this.enteredFirstName);
     },
 
   },

@@ -34,40 +34,20 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
     addOne() {
         this.counter++;
     },
-    showUsers() {
-      axios({
-        method: 'POST',
-        url: 'http://135.181.104.18:8081/user/authenticate',
-        data: {
-          email: 'anonymous@isd.com',
-          password: 'qwe123',
-        },
-      })
-        .then((response) => {
-          this.token = response.data.token;
-          localStorage.setItem('token', this.token!);
-          console.log('RESPONSE', this.token);
-          this.getUsers();
-        });
-    },
-    getUsers() {
-      axios
-        .get('http://135.181.104.18:8081/user', {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        })
-        .then((response) => {
-          this.users = response.data;
+    async getUsers() {
+      return axios
+        .get('http://135.181.104.18:8081/user')
+        .then(({data}) => {
+          this.$state.users = data;
+          console.log('users :', data);
         });
     },
     updModal(id) {
       this.showUpdate = true;
-      this.uId = id;
-      // this.updateUser = user;
-      console.log('UPDATEUSER', this.uId);
+      console.log('UPDATEUSER', id);
     },
-    updateUser(data:{email:any, id:any, firstname:any, lastname:any, role:any}) {
+    updateUser(data: { email:string, password:string,
+      firstname:string; lastname:string; id:number; role:string;}) {
       console.log('DDDDDDDDATA', data, data.id, data.lastname, data.email, this.showUpdate);
         axios.put(
           'http://135.181.104.18:8081/user',
@@ -88,7 +68,6 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
             console.log(this.userForUpdate);
           });
         this.showUpdate = false;
-        this.showUsers();
       },
       handleCloseUpdate() {
         this.showUpdate = false;
