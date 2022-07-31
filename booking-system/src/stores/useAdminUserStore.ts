@@ -5,7 +5,13 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
   state: () => ({
     counter: 0,
     name: 'adminUsersStore',
-    users: {},
+    users: [{
+      id: Number,
+      firstname: String,
+      lastname: String,
+      email: String,
+      role: String,
+    }],
     token: '',
     userForUpdate: '',
     userForDelete: {},
@@ -15,7 +21,12 @@ export const useAdminUserStore = defineStore('AdminUserStore', {
   actions: {
     async getUsers() {
       return axios
-        .get('http://135.181.104.18:8081/user')
+        .get('http://135.181.104.18:8081/user',
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },)
         .then(({data}) => {
           this.$state.users = data;
           console.log('users :', data);

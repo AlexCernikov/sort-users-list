@@ -17,7 +17,7 @@
           <th scope='col'>#</th>
           <th scope='col'>Entity name</th>
           <th scope='col'>User Fullname</th>
-          <th scope='col'>From Date</th>
+          <th scope='col'><a @click="sortList('fromDate')">Модель</a></th>
           <th scope='col'>To Date</th>
           <th scope='col'></th>
         </tr>
@@ -68,8 +68,8 @@
   </section>
 </template>
 
-<script lang='ts'>
-import { defineComponent } from 'vue';
+<script lang="ts">
+import { defineAsyncComponent, defineComponent } from 'vue';
 import EditReservationModal from '../Modals/EditReservationModal.vue';
 import CreateReservationModal from '../Modals/CreateReservationModal.vue';
 import InfoReservationModal from '../Modals/InfoReservationModal.vue';
@@ -93,6 +93,9 @@ export default defineComponent({
       showCreate: false,
       reservations: [],
       token: '',
+      sortedbyASC: true,
+      sortBy: 'firstname',
+      sortDirection: 'asc',
     };
   },
   mounted() {
@@ -100,6 +103,16 @@ export default defineComponent({
     this.getReservations();
   },
   methods: {
+    sortList(sortBy) {
+      console.log('FROMDATE', sortBy, this.reservations);
+      if (this.sortedbyASC) {
+        this.reservations.sort((x, y) => (x[sortBy] > y[sortBy] ? -1 : 1));
+        this.sortedbyASC = false;
+      } else {
+        this.reservations.sort((x, y) => (x[sortBy] < y[sortBy] ? -1 : 1));
+        this.sortedbyASC = true;
+      }
+  },
     handleCloseEdit() {
       this.showEdit = false;
     },

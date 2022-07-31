@@ -54,3 +54,9 @@ input[type="search"] {
 input[type="submit"] {
   -webkit-appearance: none;
 }
+.form-control{
+  border-radius: 0;
+}
+tr:hover{
+  background-color: #10375C;
+}
